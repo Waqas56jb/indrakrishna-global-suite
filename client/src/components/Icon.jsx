@@ -27,6 +27,14 @@ const PATHS = {
   users: 'M17 21a6 6 0 00-12 0M11 11a4 4 0 100-8 4 4 0 000 8zM23 21a6 6 0 00-4-5.6M16 3.1a4 4 0 010 7.8',
   ruler: 'M3 17L17 3l4 4L7 21zM7 13l2 2M10 10l2 2M13 7l2 2',
   layers: 'M12 2l10 6-10 6L2 8zM2 14l10 6 10-6',
+  download: 'M12 3v12M7 10l5 5 5-5M4 21h16',
+  edit: 'M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4',
+  chevron: 'M6 9l6 6 6-6',
+  file: 'M14 2H6v20h12V6zM14 2v4h4M9 13h6M9 17h6',
+  globe: 'M12 22a10 10 0 100-20 10 10 0 000 20zM2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20',
+  briefcase: 'M3 7h18v13H3zM8 7V4h8v3M3 13h18',
+  rupee: 'M6 4h12M6 9h12M14 20L7 13h3a4 4 0 000-9',
+  bank: 'M3 10l9-6 9 6M5 10v8M9 10v8M15 10v8M19 10v8M3 21h18',
 }
 
 export default function Icon({ name, size = 20, stroke = 1.8, className = '' }) {

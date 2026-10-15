@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useSwipe } from '../hooks'
 import Icon from './Icon'
 
 export default function HeroSlider({ slides, interval = 5500 }) {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const go = useCallback((i) => setIndex((i + slides.length) % slides.length), [slides.length])
+  const swipe = useSwipe(() => go(index + 1), () => go(index - 1))
 
   useEffect(() => {
     if (paused) return
@@ -19,6 +21,7 @@ export default function HeroSlider({ slides, interval = 5500 }) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
+      {...swipe}
     >
       {slides.map((s, i) => (
         <div key={s.title} className={`hero__slide ${i === index ? 'is-active' : ''}`} aria-hidden={i !== index}>

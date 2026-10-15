@@ -22,141 +22,148 @@ export const IMAGES = {
     lobby: '/images/flat-2/lobby-lift.jpg',
   },
   interior: u('1618221195710-dd6b41faaea6'),
-  interior2: u('1600573472550-8090b5e0745e'),
-  living: u('1600210492486-724fe5c67fb0'),
+  electrical: u('1600573472550-8090b5e0745e'),
   keys: u('1560518883-ce09059eeffa'),
+  documents: u('1554224155-6726b3ff858f'),
+  office: u('1600880292203-757bb62b4baf'),
 }
 
-export const STATUS_LINE = 'Apartment for Lease – Under Construction, Ready to Occupy by Nov 2028'
+export const STATUS_LINE = 'Apartment For Lease – Under Construction, Ready to Occupy by Nov 2028'
+export const LEASE_TERM = '8 + 2 (Construction) = 10 Years'
+export const TRUST_LINE = 'Built on Trust • Driven by Quality • Anchored in Ethics'
 
 export const SLIDES = [
   {
     image: IMAGES.elevation1,
     eyebrow: 'West Mambalam, Chennai',
     title: 'IndraKrishna Global Suite',
-    text: 'Apartments for Lease – Under Construction, Ready to Occupy by Nov 2028.',
+    text: 'Purely residential apartment designed for Corporate Companies, Staff Quarters & Guest Houses.',
   },
   {
     image: IMAGES.elevation2,
-    eyebrow: 'Elegant Elevation',
-    title: 'A Landmark Address',
-    text: 'Contemporary architecture with warm tones, lit facades and a gated entrance.',
+    eyebrow: 'Premium 2-BHK Suite Apartments',
+    title: '6 Semi-Furnished Flats for Lease',
+    text: '610 sq.ft & 1200 sq.ft flats with lift, covered car park and 24x7 CCTV security.',
   },
   {
     image: IMAGES.flat2.hall,
-    eyebrow: '2 BHK Residences',
-    title: 'Spacious, Bright Living',
-    text: 'Marble-finish floors, teak-finish doors and balconies with open views.',
+    eyebrow: 'Long-Term Corporate Lease',
+    title: 'Lease for 8 + 2 = 10 Years',
+    text: 'Ideal staff quarters for Banks, Software, FMCG, Colleges, Government & more.',
   },
   {
     image: IMAGES.elevation3,
-    eyebrow: 'Lease Enquiries Open',
-    title: 'Reserve Your Home Today',
-    text: 'Limited apartments available. Loan assistance provided.',
+    eyebrow: 'Under Construction',
+    title: 'Ready to Occupy by Nov 2028',
+    text: 'Plan approved by Greater Chennai Corporation. Lease enquiries open now.',
   },
 ]
 
 export const HIGHLIGHTS = [
-  { value: 'G+2', label: 'Floors' },
-  { value: '2 BHK', label: 'Apartments' },
-  { value: 'Lift', label: '& Power Backup' },
+  { value: '6', label: 'Semi-Furnished Flats' },
+  { value: '610 / 1200', label: 'Sq. Feet' },
+  { value: '10 Yrs', label: 'Lease (8 + 2)' },
   { value: 'Nov 2028', label: 'Ready to Occupy' },
 ]
 
-// Shown on Home in the red "Specifications" style the client shared.
+export const SECTORS = [
+  'Banks', 'BPO & KPO', 'College & University', 'Finance', 'FMCG', 'Government',
+  'Manufacturing', 'Software', 'Stocks & Securities, Mutual Funds',
+]
+
+// Project highlights from the client's content.
+export const FEATURES = [
+  { icon: 'home', title: '6 Semi-Furnished Flats', text: 'Premium 2-BHK suite apartments.' },
+  { icon: 'ruler', title: '610 & 1200 Sq. Feet', text: 'Two flat sizes to suit your team.' },
+  { icon: 'layers', title: 'Two Residential Floors', text: '4 flats on First Floor, 2 flats on Second Floor.' },
+  { icon: 'car', title: 'Covered Car Park', text: 'Ground floor reserved for parking.' },
+  { icon: 'lift', title: 'Lift for Two Floors', text: 'Easy access to every flat.' },
+  { icon: 'bolt', title: 'Solar / Inverter Support', text: 'Uninterrupted everyday comfort.' },
+  { icon: 'wifi', title: 'High Speed Internet', text: 'Work-from-home ready.' },
+  { icon: 'shield', title: '24x7 CCTV Security', text: 'Round-the-clock surveillance.' },
+]
+
+export const WORKFLOW = [
+  { title: 'Plan Approval & Permits', text: 'Plan approved by Greater Chennai Corporation.' },
+  {
+    title: 'Superstructure Execution',
+    text: 'Pile foundations, RCC framing, bricklaying, and electrical / plumbing rough-ins with grade-A materials.',
+  },
+  {
+    title: 'Finishing & Handover',
+    text: 'Plastering, flooring, painting, fixture installation, and full quality audit before key handover.',
+  },
+]
+
+export const FAQS = [
+  ['Is the IndraKrishna Global Suite apartment approved?', 'Yes, it is approved by Greater Chennai Corporation.'],
+  ['Where is the site located?', 'West Mambalam, just opposite R3 Police Booth – 62, Naickamar Street, West Mambalam, Chennai – 600033.'],
+  ['What is the total area?', 'Around 3080 sq.feet, with a built-up area of around 2700 sq.feet.'],
+  ['When will the apartment be completed?', 'The residential flats are under construction. The apartment will be ready to occupy by Nov 2028.'],
+  ['How many flats are in the apartment?', 'The First Floor has 4 flats of 610 sq.feet each and the Second Floor has 2 flats of 1200 sq.feet each – a total of 6 flats.'],
+  ['What is the lease period?', 'Flats are offered on lease for 8 + 2 (construction) = 10 years.'],
+  ['Who can take the flats on lease?', 'Corporate companies, working professionals, Government organisations and clients worldwide with an office in India – as staff quarters, guest houses or employee accommodation.'],
+]
+
 export const SPECIFICATIONS = [
-  {
-    title: 'Flooring',
-    image: IMAGES.flat2.hall,
-    items: [
-      ['Living, Dining & Kitchen', 'Vitrified / Marble finish flooring'],
-      ['Bedrooms', 'Premium vitrified tiles'],
-      ['Staircase', 'Black granite with steel handrails'],
-    ],
-  },
-  {
-    title: 'Wall Finish',
-    image: IMAGES.flat1.hall,
-    items: [
-      ['Exterior', 'Weather Proof Emulsion (Texture finish)'],
-      ['Interior', 'Putty finish with premium emulsion paint'],
-      ['Lobby', 'Textured walls with decorative lighting'],
-    ],
-  },
-  {
-    title: 'Bathrooms',
-    image: IMAGES.flat1.restroom,
-    items: [
-      ['Fittings', 'Jaquar / Hindware or equivalent CP fittings'],
-      ['Wall Tiles', 'Designer ceramic tiles up to 7 ft'],
-      ['Sanitary', 'Wall-mounted EWC with concealed cistern'],
-    ],
-  },
+  { title: 'Flooring', image: IMAGES.flat2.hall, items: [['Flooring', 'Quality Vitrified Tiles']] },
   {
     title: 'Kitchen',
     image: IMAGES.flat2.kitchen,
-    items: [
-      ['Counter', 'Granite platform with stainless steel sink'],
-      ['Dado', 'Ceramic tiles 2 ft above counter'],
-      ['Provision', 'Water purifier & exhaust fan points'],
-    ],
+    items: [['Kitchen', 'Sink, Granite Platform & Stainless Steel Tap']],
   },
   {
-    title: 'Doors & Windows',
-    image: IMAGES.entrance,
-    items: [
-      ['Main Door', 'Teak wood frame with designer shutter'],
-      ['Internal Doors', 'Flush doors with laminate finish'],
-      ['Windows', 'UPVC windows with mosquito mesh'],
-    ],
+    title: 'Electrical',
+    image: IMAGES.flat1.hall,
+    items: [['Power', '3-Phase Electric Current with Sub Meter'], ['Fittings', 'AC Provision, Lights & Fans']],
+  },
+  { title: 'Wall Finish', image: IMAGES.elevation3, items: [['Exterior', 'Weather Proof Emulsion']] },
+  {
+    title: 'Bathroom',
+    image: IMAGES.flat1.restroom,
+    items: [['Bathroom', 'Shower & Stainless Steel Taps']],
+  },
+  { title: 'Lobby & Lift', image: IMAGES.flat2.lobby, items: [['Lift', 'Lift serving both residential floors']] },
+]
+
+export const LOAN_DOCS = [
+  {
+    title: 'Salaried',
+    icon: 'user',
+    docs: ['Aadhaar Proof', 'Address Proof', 'Salary Slips – last 6 months', 'Bank Statement – last 6 months', 'ITR – last 6 months'],
   },
   {
-    title: 'Lobby & Lift',
-    image: IMAGES.flat2.lobby,
-    items: [
-      ['Lift', 'Branded passenger lift with power backup'],
-      ['Lobby', 'Marble flooring with ambient lighting'],
-      ['Electrical', 'Concealed copper wiring & modular switches'],
-    ],
+    title: 'Business',
+    icon: 'users',
+    docs: ['Aadhaar Proof', 'Address Proof', 'Bank Statement – last 6 months', 'ITR – last 6 months'],
   },
 ]
 
-export const AMENITIES = [
-  { icon: 'shield', title: '24/7 Security', text: 'CCTV surveillance and gated entry.' },
-  { icon: 'car', title: 'Covered Parking', text: 'Dedicated stilt parking for residents.' },
-  { icon: 'lift', title: 'Passenger Lift', text: 'Branded lift with power backup.' },
-  { icon: 'bolt', title: 'Power Backup', text: 'Generator backup for common areas.' },
-  { icon: 'drop', title: '24 Hrs Water', text: 'Borewell + metro water with sump.' },
-  { icon: 'leaf', title: 'Landscaped Entrance', text: 'Green hedges and lit pathways.' },
-  { icon: 'wifi', title: 'Internet Ready', text: 'Broadband & DTH provisions.' },
-  { icon: 'pin', title: 'Prime Location', text: 'Close to rail, metro and markets.' },
-]
-
-export const LOAN_POINTS = [
-  'Tie-ups with leading nationalised & private banks',
-  'Help with documentation and eligibility check',
-  'Quick processing and attractive interest rates',
-  'Dedicated support from enquiry to disbursement',
-]
-
-export const NEARBY = [
-  ['West Mambalam Railway Station', '0.5 km'],
-  ['Ashok Nagar Metro Station', '2.0 km'],
-  ['T. Nagar Shopping District', '2.5 km'],
-  ['Schools & Colleges', '1.0 km'],
-  ['Hospitals', '1.5 km'],
-  ['Chennai Airport', '12 km'],
+export const NRI_DOCS = [
+  'Indian Passport',
+  'PIO card / OCI card, if applicable',
+  'PAN card',
+  'Latest salary pay slips for the past 6 months',
+  'Income tax returns for the last 2 years',
+  'Copy of employment contract',
+  'Appointment letter, if applicable',
+  'Work permit, if applicable',
+  'Bank statement for the past 1 year from an external bank account',
+  'Bank statement for the last 1 year from an NRE / NRO account',
+  'Address proof',
+  'Credit report',
 ]
 
 // Two 2 BHK flat sets supplied by the client.
 export const FLATS = [
   {
     id: 'flat-1',
-    type: '2 BHK – Flat 1',
-    floor: 'First Floor',
+    type: '2 BHK – 610 Sq.ft',
+    short: 'First Floor',
+    floor: 'First Floor · 4 Flats',
     cover: IMAGES.flat1.hall,
-    text: 'A warm, well-lit 2 BHK with a feature-wall living room, modular kitchen and a sit-out balcony overlooking the street.',
-    features: ['Spacious hall with feature wall', 'Modular kitchen', '2 Bedrooms', 'Attached rest room', 'Balcony'],
+    text: 'Compact, well-planned semi-furnished 2-BHK flats – ideal as staff quarters for working professionals.',
+    features: ['610 sq.feet each', 'Hall with feature wall', 'Kitchen with granite platform', '2 Bedrooms', 'Bathroom with shower', 'Balcony'],
     photos: [
       { src: IMAGES.entrance, caption: 'Entrance – 1st Floor' },
       { src: IMAGES.flat1.hall, caption: 'Hall' },
@@ -168,11 +175,12 @@ export const FLATS = [
   },
   {
     id: 'flat-2',
-    type: '2 BHK – Flat 2',
-    floor: 'Second Floor',
+    type: '2 BHK – 1200 Sq.ft',
+    short: 'Second Floor',
+    floor: 'Second Floor · 2 Flats',
     cover: IMAGES.flat2.hall,
-    text: 'A bright, open-plan 2 BHK with marble-finish flooring, a large living area opening to the balcony, and lift access from a premium lobby.',
-    features: ['Open living & dining', 'Modern kitchen', '2 Bedrooms', 'Designer rest room', 'Lobby with lift'],
+    text: 'Spacious semi-furnished 2-BHK suites with a large living area opening to the balcony – ideal as guest houses or senior staff quarters.',
+    features: ['1200 sq.feet each', 'Large living & dining', 'Modern kitchen', '2 Bedrooms', 'Designer bathroom', 'Lobby with lift'],
     photos: [
       { src: IMAGES.flat2.hall, caption: 'Hall' },
       { src: IMAGES.flat2.kitchen, caption: 'Kitchen' },
@@ -188,7 +196,7 @@ export const GALLERY = [
   { src: IMAGES.elevation1, caption: 'Elevation – Angle 1', tag: 'Elevation' },
   { src: IMAGES.elevation2, caption: 'Elevation – Angle 2', tag: 'Elevation' },
   { src: IMAGES.elevation3, caption: 'Front Elevation', tag: 'Elevation' },
-  ...FLATS.flatMap((f) => f.photos.map((p) => ({ ...p, caption: `${f.type.split('– ')[1]} · ${p.caption}`, tag: f.type.split('– ')[1] }))),
+  ...FLATS.flatMap((f) => f.photos.map((p) => ({ ...p, caption: `${f.short} · ${p.caption}`, tag: f.short }))),
 ]
 
 export const COUNTRIES = [
@@ -196,3 +204,7 @@ export const COUNTRIES = [
   'Kuwait', 'Oman', 'Bahrain', 'Singapore', 'Malaysia', 'Australia', 'Canada', 'Germany',
   'New Zealand', 'Sri Lanka', 'Other',
 ]
+
+export const CUSTOMER_STATUSES = ['Enquired', 'Willing to take', 'Taken on Lease', 'Not interested']
+export const REFERRAL_STATUSES = ['Referred', 'In Progress', 'Eligible', 'Paid', 'Cancelled']
+export const PAYMENT_MODES = ['Bank Transfer', 'Cheque', 'UPI', 'Cash']

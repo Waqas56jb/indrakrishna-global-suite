@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
-import EnquiryForm from '../components/EnquiryForm'
+import LeadForm from '../components/EnquiryForm'
 import Gallery from '../components/Gallery'
 import HeroSlider from '../components/HeroSlider'
 import Icon from '../components/Icon'
 import Reveal from '../components/Reveal'
 import SectionTitle from '../components/SectionTitle'
 import VideoTour from '../components/VideoTour'
-import { SITE } from '../config'
-import { AMENITIES, GALLERY, HIGHLIGHTS, IMAGES, LOAN_POINTS, SLIDES, SPECIFICATIONS, STATUS_LINE } from '../data'
+import { SITE, tel } from '../config'
+import { FEATURES, FLATS, GALLERY, HIGHLIGHTS, IMAGES, LEASE_TERM, SECTORS, SLIDES, STATUS_LINE } from '../data'
 
 export default function Home() {
   return (
@@ -19,11 +19,10 @@ export default function Home() {
         <div className="container status-strip__inner">
           <span className="status-strip__dot" />
           <strong>{STATUS_LINE}</strong>
-          <Link to="/contact" className="btn btn--gold btn--sm">Enquire Now</Link>
+          <a href={tel(SITE.phone)} className="btn btn--gold btn--sm"><Icon name="phone" size={16} /> {SITE.phone}</a>
         </div>
       </div>
 
-      {/* Highlights strip */}
       <section className="highlights">
         <div className="container highlights__grid">
           {HIGHLIGHTS.map((h, i) => (
@@ -35,7 +34,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About / elevation */}
+      {/* About */}
       <section className="section">
         <div className="container split">
           <Reveal className="split__media">
@@ -48,63 +47,99 @@ export default function Home() {
           <Reveal className="split__body" delay={120}>
             <SectionTitle
               center={false}
-              eyebrow="Welcome to"
-              title={SITE.name}
-              text={`A boutique residential address in ${SITE.location}, offering premium 2 BHK apartments for lease with thoughtful layouts, elegant finishes and everyday convenience at your doorstep.`}
+              eyebrow="Premium 2-BHK Suite Apartments"
+              title="Purely Residential Apartment for Corporates"
+              text="Designed for Corporate Companies, Staff Quarters and Guest Houses."
             />
-            <ul className="ticks">
-              <li><Icon name="check" size={18} /> Gated community with landscaped entrance</li>
-              <li><Icon name="check" size={18} /> Spacious 2 BHK homes with balconies & ample ventilation</li>
-              <li><Icon name="check" size={18} /> Lobby with passenger lift and power backup</li>
-              <li><Icon name="check" size={18} /> Loan assistance from leading banks</li>
-            </ul>
+            <p className="lead">
+              We are constructing 2-BHK flats on a 3000 sq.feet plot with 2 floors at West Mambalam, Chennai. The ground floor
+              has a covered car park, and a lift serves both floors. The First Floor has 4 flats of 610 sq.feet and the Second
+              Floor has 2 flats of 1200 sq.feet – a total of 6 flats.
+            </p>
+            <p className="lead">
+              The flats are offered on lease for <strong>{LEASE_TERM}</strong>. Construction will be completed and ready to
+              occupy by Nov 2028.
+            </p>
             <div className="btn-row">
-              <Link to="/project" className="btn btn--primary">View Apartments</Link>
-              <Link to="/contact" className="btn btn--outline">Book a Site Visit</Link>
+              <Link to="/project" className="btn btn--primary">View Project</Link>
+              <Link to="/contact" className="btn btn--outline">Enquire for Lease</Link>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Elevation video */}
-      <section className="section section--cream">
+      {/* Who it's for */}
+      <section className="section section--dark">
         <div className="container">
-          <SectionTitle eyebrow="Video" title="Elevation Walkthrough" text="See the building from every angle – facade, entrance and gated frontage." />
-          <Reveal>
-            <VideoTour src={SITE.videos.elevation} poster={IMAGES.elevation2} label="Watch the Elevation Video" />
-          </Reveal>
+          <SectionTitle
+            light
+            eyebrow="Who We Are Looking For"
+            title="Ideal for Corporate Staff Quarters & Guest Houses"
+            text="We are looking for Corporate Companies, Working Professionals and Government organisations who need flats for their employees for around 8–10 years on lease – including clients worldwide with an office in India."
+          />
+          <div className="audience">
+            <Reveal className="audience__card">
+              <Icon name="briefcase" size={28} />
+              <h4>Corporate Companies</h4>
+              <p>Staff quarters for your employees on a long-term lease.</p>
+            </Reveal>
+            <Reveal className="audience__card" delay={100}>
+              <Icon name="globe" size={28} />
+              <h4>Global Clients</h4>
+              <p>Companies worldwide with an office in India – as guest houses.</p>
+            </Reveal>
+            <Reveal className="audience__card" delay={200}>
+              <Icon name="users" size={28} />
+              <h4>4 – 5 Clients</h4>
+              <p>Take 1, 2 or all 6 flats in the apartment.</p>
+            </Reveal>
+          </div>
+          <h3 className="sectors__title">Pure Residential Accommodation Ideal for Working Professionals From</h3>
+          <div className="sectors">
+            {SECTORS.map((s) => <span key={s} className="sector">{s}</span>)}
+          </div>
         </div>
       </section>
 
-      {/* Specifications – styled after client sample */}
-      <section className="section specs">
+      {/* Flats */}
+      <section className="section section--cream">
         <div className="container">
-          <SectionTitle light title="Specifications" text="Quality finishes chosen for comfort, durability and style." />
-          <div className="specs__grid">
-            {SPECIFICATIONS.map((s, i) => (
-              <Reveal key={s.title} className="spec" delay={(i % 3) * 100}>
-                <div className="spec__img"><img src={s.image} alt={s.title} loading="lazy" /></div>
-                <h3>{s.title}</h3>
-                <dl>
-                  {s.items.map(([k, v]) => (
-                    <div key={k}>
-                      <dt>{k}</dt>
-                      <dd>{v}</dd>
-                    </div>
-                  ))}
-                </dl>
+          <SectionTitle eyebrow="6 Semi-Furnished Flats" title="Choose Your Flat Size" />
+          <div className="flat-cards">
+            {FLATS.map((f, i) => (
+              <Reveal key={f.id} className="flat-card" delay={i * 120}>
+                <Link to={`/project#${f.id}`} className="flat-card__img">
+                  <img src={f.cover} alt={f.type} loading="lazy" />
+                  <span className="apartment__badge">For Lease</span>
+                </Link>
+                <div className="flat-card__body">
+                  <span className="eyebrow">{f.floor}</span>
+                  <h3>{f.type}</h3>
+                  <p>{f.text}</p>
+                  <Link to={`/project#${f.id}`} className="btn btn--outline btn--sm">View Pictures</Link>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Amenities */}
+      {/* Elevation video */}
+      <section className="section">
+        <div className="container">
+          <SectionTitle eyebrow="Video" title="Elevation Video" text="See the building from every angle – facade, entrance and gated frontage." />
+          <Reveal>
+            <VideoTour src={SITE.videos.elevation} poster={IMAGES.elevation2} label="Watch the Elevation Video" />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Features */}
       <section className="section section--cream">
         <div className="container">
-          <SectionTitle eyebrow="Facilities" title="Amenities & Conveniences" text="Everything you need for a secure, comfortable and connected lifestyle." />
+          <SectionTitle eyebrow="Features" title="Amenities & Facilities" />
           <div className="amenities">
-            {AMENITIES.map((a, i) => (
+            {FEATURES.map((a, i) => (
               <Reveal key={a.title} className="amenity" delay={(i % 4) * 80}>
                 <span className="amenity__icon"><Icon name={a.icon} size={26} /></span>
                 <h4>{a.title}</h4>
@@ -115,7 +150,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Loan assistance */}
+      {/* Loan assistance teaser */}
       <section className="section">
         <div className="container split">
           <Reveal className="split__body">
@@ -123,22 +158,24 @@ export default function Home() {
               center={false}
               eyebrow="Finance Made Easy"
               title="Loan Assistance Available"
-              text="Our team helps you get the right loan with minimum hassle – from eligibility check to final approval."
+              text="For salaried and business customers. Share your documents – after checking eligibility, we shall proceed."
             />
             <ul className="ticks">
-              {LOAN_POINTS.map((p) => <li key={p}><Icon name="check" size={18} /> {p}</li>)}
+              <li><Icon name="check" size={18} /> Salaried – Aadhaar, Address Proof, 6 months Salary Slips, Bank Statement & ITR</li>
+              <li><Icon name="check" size={18} /> Business – Aadhaar, Address Proof, 6 months Bank Statement & ITR</li>
+              <li><Icon name="check" size={18} /> NRI tenants welcome – no restriction on number of flats</li>
             </ul>
             <div className="btn-row">
-              <Link to="/contact" className="btn btn--primary">Ask About Loans</Link>
+              <Link to="/loan-assistance" className="btn btn--primary">Loan & NRI Details</Link>
             </div>
           </Reveal>
           <Reveal className="split__media loan" delay={120}>
             <img src={IMAGES.keys} alt="Loan assistance" loading="lazy" />
             <div className="loan__card">
-              <span className="amenity__icon"><Icon name="shield" size={24} /></span>
+              <span className="amenity__icon"><Icon name="bank" size={24} /></span>
               <div>
-                <strong>Hassle-free Process</strong>
-                <span>End-to-end support</span>
+                <strong>Eligibility Check</strong>
+                <span>We guide you end-to-end</span>
               </div>
             </div>
           </Reveal>
@@ -148,10 +185,10 @@ export default function Home() {
       {/* Gallery */}
       <section className="section section--cream">
         <div className="container">
-          <SectionTitle eyebrow="Gallery" title="Elevation & Interiors" />
+          <SectionTitle eyebrow="Gallery" title="Elevation & 2-BHK Interiors" />
           <Gallery items={[GALLERY[0], GALLERY[1], ...GALLERY.filter((g) => /Hall|Kitchen|Balcony|Lobby/.test(g.caption))].slice(0, 6)} filters={false} />
           <div className="center mt-lg">
-            <Link to="/project" className="btn btn--outline">View All Apartment Pictures</Link>
+            <Link to="/project" className="btn btn--outline">View All Pictures</Link>
           </div>
         </div>
       </section>
@@ -162,8 +199,8 @@ export default function Home() {
         <div className="container cta__inner">
           <div>
             <span className="eyebrow eyebrow--light">Refer & Earn</span>
-            <h2>Know someone looking for a home?</h2>
-            <p>Refer your friends and family to {SITE.name} and earn exciting rewards on every successful lease.</p>
+            <h2>Earn up to {SITE.referral.bonus}</h2>
+            <p>Refer your family, friends or colleagues to take a flat on lease for {LEASE_TERM}.</p>
           </div>
           <Link to="/refer-and-earn" className="btn btn--gold">Refer Now</Link>
         </div>
@@ -175,17 +212,17 @@ export default function Home() {
           <div>
             <SectionTitle
               center={false}
-              eyebrow="Get in Touch"
-              title="Enquire About Leasing"
-              text="Share your details and our leasing team will get back to you with availability, pricing and site-visit slots."
+              eyebrow="Lease Enquiries"
+              title="Enquire for Lease"
+              text={`Lease for ${LEASE_TERM}. Share your details and our team will get back to you.`}
             />
             <div className="contact-mini">
-              <a href={`tel:${SITE.phone.replace(/\s/g, '')}`}><Icon name="phone" /> {SITE.phone}</a>
+              <a href={tel(SITE.phone)}><Icon name="phone" /> {SITE.phone}</a>
               <a href={`mailto:${SITE.email}`}><Icon name="mail" /> {SITE.email}</a>
               <span><Icon name="pin" /> {SITE.siteAddress}</span>
             </div>
           </div>
-          <div className="card"><EnquiryForm compact /></div>
+          <div className="card"><LeadForm type="enquiry" compact /></div>
         </div>
       </section>
     </>

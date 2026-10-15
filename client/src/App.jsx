@@ -11,6 +11,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
 import Project from './pages/Project'
+import LoanAssistance from './pages/LoanAssistance'
 import ReferEarn from './pages/ReferEarn'
 import Terms from './pages/Terms'
 
@@ -18,11 +19,12 @@ const TITLES = {
   '/': 'Apartments for Lease – Ready to Occupy by Nov 2028',
   '/project': 'Project',
   '/refer-and-earn': 'Refer & Earn',
+  '/loan-assistance': 'Loan Assistance',
   '/contact': 'Contact Us',
   '/login': 'Login',
   '/terms': 'Terms & Conditions',
-  '/admin/customers': 'Customer DB',
-  '/admin/referrals': 'Referral DB',
+  '/admin/customers': 'Customers List',
+  '/admin/referrals': 'Referral List',
 }
 
 function SiteLayout() {
@@ -39,12 +41,18 @@ function SiteLayout() {
 }
 
 export default function App() {
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     document.title = `IndraKrishna Global Suite - ${TITLES[pathname] || 'Page Not Found'}`
-  }, [pathname])
+    const target = hash && document.getElementById(decodeURIComponent(hash.slice(1)))
+    if (target) {
+      // Wait a frame so the new page has laid out before jumping to the section.
+      requestAnimationFrame(() => target.scrollIntoView({ behavior: 'instant', block: 'start' }))
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+    }
+  }, [pathname, hash])
 
   return (
     <Routes>
@@ -52,6 +60,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/project" element={<Project />} />
         <Route path="/refer-and-earn" element={<ReferEarn />} />
+        <Route path="/loan-assistance" element={<LoanAssistance />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/terms" element={<Terms />} />
