@@ -19,9 +19,9 @@ export const SITE = {
   mapEmbed:
     'https://www.google.com/maps?q=Naickamar+Street,+West+Mambalam,+Chennai+600033&output=embed',
   mapLink: 'https://www.google.com/maps/search/?api=1&query=Naickamar+Street+West+Mambalam+Chennai+600033',
-  // Client will send both videos – drop them into public/videos with these names.
+  // YouTube links or local files in public/videos (2-BHK video still to come from client).
   videos: {
-    elevation: '/videos/elevation.mp4',
+    elevation: 'https://www.youtube.com/watch?v=LYwMVPmriXU',
     flat: '/videos/2bhk.mp4',
   },
   social: {

@@ -328,6 +328,7 @@ h1, h2 { font-family: var(--serif); font-weight: 600; }
 /* Video */
 .video { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 16 / 9; background: #000; max-width: 1000px; margin: 0 auto; }
 .video video { width: 100%; height: 100%; object-fit: cover; }
+.video iframe { width: 100%; height: 100%; border: 0; display: block; }
 .video__poster {
   position: relative;
   width: 100%;
@@ -959,7 +960,7 @@ body { -webkit-tap-highlight-color: transparent; overflow-wrap: break-word; }
 .doc-card__head h3 { font-family: var(--serif); font-size: 26px; color: var(--brown-800); font-weight: 600; }
 .note { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; padding: 20px 24px; border-radius: var(--radius); background: var(--cream); border-left: 4px solid var(--primary); }
 .note > svg { color: var(--primary); flex: none; }
-.note p { margin: 0; flex: 1 1 260px; color: #4a3d35; }
+.note p { margin: 0; flex: 1 1 260px; min-width: 0; color: #4a3d35; overflow-wrap: anywhere; }
 .note a strong { color: var(--primary); }
 .pay-box { background: #fff; border-radius: 12px; padding: 18px 22px; border: 1px solid var(--line); }
 .pay-box h4 { display: flex; align-items: center; gap: 8px; color: var(--brown-800); margin-bottom: 6px; font-size: 17px; }
