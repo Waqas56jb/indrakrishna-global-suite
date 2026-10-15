@@ -4,7 +4,7 @@ import { SITE, whatsappLink } from '../config'
 import { COUNTRIES } from '../data'
 import Icon, { WhatsAppIcon } from './Icon'
 
-const EMPTY = { name: '', email: '', mobile: '', country: 'India', apartment: '2 BHK', message: '' }
+const EMPTY = { name: '', email: '', mobile: '', country: 'India', message: '' }
 
 export function validate(values, required) {
   const errors = {}
@@ -56,7 +56,7 @@ export default function EnquiryForm({ compact = false }) {
   }
 
   const waText = sent
-    ? `Hi, I'm ${sent.name} (${sent.mobile}, ${sent.country}). I'm interested in a ${sent.apartment} at ${SITE.name}.${sent.message ? ` ${sent.message}` : ''}`
+    ? `New enquiry – ${SITE.name}\nName: ${sent.name}\nMobile: ${sent.mobile}\nEmail: ${sent.email}\nCountry: ${sent.country}${sent.message ? `\nMessage: ${sent.message}` : ''}`
     : ''
 
   return (
@@ -68,13 +68,6 @@ export default function EnquiryForm({ compact = false }) {
         <Field label="Country *" name="country" as="select" value={values.country} onChange={onChange} error={errors.country}>
           {COUNTRIES.map((c) => <option key={c}>{c}</option>)}
         </Field>
-        {!compact && (
-          <Field label="Apartment Type" name="apartment" as="select" value={values.apartment} onChange={onChange}>
-            <option>2 BHK</option>
-            <option>3 BHK</option>
-            <option>Not sure yet</option>
-          </Field>
-        )}
         <Field
           label="Message"
           name="message"
@@ -92,7 +85,7 @@ export default function EnquiryForm({ compact = false }) {
         <div className="alert alert--success">
           <Icon name="check" size={18} /> {status.message}
           <a className="btn btn--wa btn--sm" href={whatsappLink(SITE.whatsapp, waText)} target="_blank" rel="noreferrer">
-            <WhatsAppIcon size={16} /> Also send on WhatsApp
+            <WhatsAppIcon size={16} /> Send on WhatsApp
           </a>
         </div>
       )}

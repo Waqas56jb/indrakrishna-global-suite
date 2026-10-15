@@ -7,7 +7,6 @@ const COLUMNS = [
   { key: 'mobile', label: 'Mobile' },
   { key: 'email', label: 'Email' },
   { key: 'country', label: 'Country' },
-  { key: 'apartment', label: 'Apartment' },
   { key: 'message', label: 'Message' },
 ]
 

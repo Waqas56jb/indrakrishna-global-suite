@@ -7,13 +7,17 @@ export const SITE = {
   siteAddress: 'IndraKrishna Global Suite, West Mambalam, Chennai, Tamil Nadu 600033, India',
   officeAddress:
     '715-A, 7th Floor, Spencer Plaza, Suite No. 875, Mount Road, Anna Salai, Chennai – 600 002, Tamil Nadu, India',
-  email: 'info@indrakrishna.com',
-  phone: '+91 98400 00000', // TODO: client to confirm
-  whatsapp: '919840000000', // TODO: client to confirm (country code + number, digits only)
+  email: 'enquiry@indrakrishnadominance.com', // enquiries are mailed here
+  phone: '+91 90032 80221',
+  whatsapp: '919003280221', // country code + number, digits only
   mapEmbed:
     'https://www.google.com/maps?q=West+Mambalam,+Chennai,+Tamil+Nadu&output=embed', // TODO: exact site pin
   mapLink: 'https://www.google.com/maps/search/?api=1&query=West+Mambalam+Chennai',
-  video: '/videos/apartment.mp4', // TODO: client will send the apartment video
+  // Client will send both videos – drop them into public/videos with these names.
+  videos: {
+    elevation: '/videos/elevation.mp4',
+    flat: '/videos/2bhk.mp4',
+  },
   social: {
     facebook: 'https://facebook.com',
     instagram: 'https://instagram.com',

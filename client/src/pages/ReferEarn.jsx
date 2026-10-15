@@ -6,6 +6,8 @@ import Icon from '../components/Icon'
 import PageHero from '../components/PageHero'
 import Reveal from '../components/Reveal'
 import SectionTitle from '../components/SectionTitle'
+import VideoTour from '../components/VideoTour'
+import { SITE } from '../config'
 import { COUNTRIES, IMAGES } from '../data'
 
 const STEPS = [
@@ -54,7 +56,7 @@ export default function ReferEarn() {
 
   return (
     <>
-      <PageHero title="Refer & Earn" subtitle="Share a home. Earn a reward." image={IMAGES.living2} />
+      <PageHero title="Refer & Earn" subtitle="Share a home. Earn a reward." image={IMAGES.flat2.hall} />
 
       <section className="section">
         <div className="container">
@@ -73,6 +75,22 @@ export default function ReferEarn() {
       </section>
 
       <section className="section section--cream">
+        <div className="container">
+          <SectionTitle eyebrow="Videos" title="Share These With Your Friends" text="Show them the building and the 2 BHK apartment before they visit." />
+          <div className="video-pair">
+            <div>
+              <VideoTour src={SITE.videos.elevation} poster={IMAGES.elevation1} label="Elevation Video" />
+              <h4>Elevation Video</h4>
+            </div>
+            <div>
+              <VideoTour src={SITE.videos.flat} poster={IMAGES.flat1.hall} label="2 BHK Video" />
+              <h4>2 BHK Apartment Video</h4>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="container narrow">
           <SectionTitle eyebrow="Referral Form" title="Refer a Friend" text="Fill in your details and the details of the person you are referring." />
           <form className="card form" onSubmit={onSubmit} noValidate>

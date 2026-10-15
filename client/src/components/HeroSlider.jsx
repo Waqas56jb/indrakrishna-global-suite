@@ -37,7 +37,7 @@ export default function HeroSlider({ slides, interval = 5500 }) {
       ))}
 
       <div className="hero__badge">
-        <span>Apartments for Lease</span>
+        <span>Apartment for Lease · Under Construction</span>
         <strong>Ready to Occupy by Nov 2028</strong>
       </div>
 

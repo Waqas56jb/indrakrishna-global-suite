@@ -664,3 +664,53 @@ h1, h2 { font-family: var(--serif); font-weight: 600; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ============ Client round 2 additions ============ */
+.status-strip { background: var(--primary); color: #fff; position: relative; z-index: 2; }
+.status-strip__inner { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 16px 0; text-align: center; flex-wrap: wrap; }
+.status-strip strong { font-family: var(--serif); font-size: clamp(17px, 2vw, 22px); font-weight: 600; letter-spacing: 0.3px; }
+.status-strip__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(212, 162, 76, 0.7); animation: pulseDot 1.8s infinite; flex: none; }
+@keyframes pulseDot { 70% { box-shadow: 0 0 0 10px rgba(212, 162, 76, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 162, 76, 0); } }
+
+.loan__card {
+  position: absolute;
+  left: -20px;
+  bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  padding: 14px 20px 14px 14px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.loan__card .amenity__icon { margin: 0; width: 52px; height: 52px; background: var(--primary); color: #fff; }
+.loan__card strong { display: block; color: var(--brown-800); }
+.loan__card span { font-size: 14px; color: var(--muted); }
+
+.flat-tabs { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: -20px 0 10px; }
+.flat { padding: 50px 0 20px; scroll-margin-top: var(--header-h); }
+.flat + .flat { border-top: 1px solid var(--line); margin-top: 40px; }
+.flat__intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: center; margin-bottom: 30px; }
+.flat__intro--rev .flat__cover { order: 2; }
+.flat__cover { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 16 / 10; }
+.flat__cover img { width: 100%; height: 100%; object-fit: cover; }
+.flat__body h3 { font-family: var(--serif); font-size: clamp(28px, 3vw, 38px); color: var(--brown-800); margin: 10px 0 12px; font-weight: 600; }
+.flat__body p { color: var(--muted); margin: 0; }
+
+.facility-banner { display: grid; grid-template-columns: 1.3fr 1fr; align-items: center; background: var(--brown-800); color: #fff; border-radius: var(--radius); overflow: hidden; margin-bottom: 36px; }
+.facility-banner img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 16 / 9; }
+.facility-banner > div { padding: 36px; }
+.facility-banner h3 { font-family: var(--serif); font-size: 30px; color: var(--gold); font-weight: 600; margin-bottom: 12px; }
+.facility-banner p { margin: 0; color: #e8d6bd; }
+
+.video-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+.video-pair h4 { text-align: center; margin-top: 14px; color: var(--brown-800); font-size: 18px; }
+.video-pair .video__label { font-size: 20px; }
+.video-pair .video__play { width: 72px; height: 72px; }
+
+@media (max-width: 900px) {
+  .flat__intro, .facility-banner, .video-pair { grid-template-columns: 1fr; gap: 24px; }
+  .flat__intro--rev .flat__cover { order: 0; }
+  .loan__card { left: 12px; bottom: 12px; }
+}

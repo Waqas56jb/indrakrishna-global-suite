@@ -7,12 +7,21 @@ import Reveal from '../components/Reveal'
 import SectionTitle from '../components/SectionTitle'
 import VideoTour from '../components/VideoTour'
 import { SITE } from '../config'
-import { AMENITIES, GALLERY, HIGHLIGHTS, IMAGES, SLIDES, SPECIFICATIONS } from '../data'
+import { AMENITIES, GALLERY, HIGHLIGHTS, IMAGES, LOAN_POINTS, SLIDES, SPECIFICATIONS, STATUS_LINE } from '../data'
 
 export default function Home() {
   return (
     <>
       <HeroSlider slides={SLIDES} />
+
+      {/* Status line under the banner (client requirement) */}
+      <div className="status-strip">
+        <div className="container status-strip__inner">
+          <span className="status-strip__dot" />
+          <strong>{STATUS_LINE}</strong>
+          <Link to="/contact" className="btn btn--gold btn--sm">Enquire Now</Link>
+        </div>
+      </div>
 
       {/* Highlights strip */}
       <section className="highlights">
@@ -30,7 +39,7 @@ export default function Home() {
       <section className="section">
         <div className="container split">
           <Reveal className="split__media">
-            <img src={IMAGES.elevation1} alt="IndraKrishna Global Suite elevation" />
+            <img src={IMAGES.elevation3} alt="IndraKrishna Global Suite elevation" />
             <div className="split__tag">
               <span>Ready by</span>
               <strong>Nov 2028</strong>
@@ -41,18 +50,28 @@ export default function Home() {
               center={false}
               eyebrow="Welcome to"
               title={SITE.name}
-              text={`A boutique residential address in ${SITE.location}, offering premium apartments for lease with thoughtful layouts, elegant finishes and everyday convenience at your doorstep.`}
+              text={`A boutique residential address in ${SITE.location}, offering premium 2 BHK apartments for lease with thoughtful layouts, elegant finishes and everyday convenience at your doorstep.`}
             />
             <ul className="ticks">
               <li><Icon name="check" size={18} /> Gated community with landscaped entrance</li>
-              <li><Icon name="check" size={18} /> Spacious 2 & 3 BHK homes with ample ventilation</li>
-              <li><Icon name="check" size={18} /> Premium specifications from trusted brands</li>
-              <li><Icon name="check" size={18} /> Walking distance to West Mambalam station</li>
+              <li><Icon name="check" size={18} /> Spacious 2 BHK homes with balconies & ample ventilation</li>
+              <li><Icon name="check" size={18} /> Lobby with passenger lift and power backup</li>
+              <li><Icon name="check" size={18} /> Loan assistance from leading banks</li>
             </ul>
             <div className="btn-row">
-              <Link to="/project" className="btn btn--primary">Explore the Project</Link>
+              <Link to="/project" className="btn btn--primary">View Apartments</Link>
               <Link to="/contact" className="btn btn--outline">Book a Site Visit</Link>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Elevation video */}
+      <section className="section section--cream">
+        <div className="container">
+          <SectionTitle eyebrow="Video" title="Elevation Walkthrough" text="See the building from every angle – facade, entrance and gated frontage." />
+          <Reveal>
+            <VideoTour src={SITE.videos.elevation} poster={IMAGES.elevation2} label="Watch the Elevation Video" />
           </Reveal>
         </div>
       </section>
@@ -83,7 +102,7 @@ export default function Home() {
       {/* Amenities */}
       <section className="section section--cream">
         <div className="container">
-          <SectionTitle eyebrow="Features" title="Amenities & Conveniences" text="Everything you need for a secure, comfortable and connected lifestyle." />
+          <SectionTitle eyebrow="Facilities" title="Amenities & Conveniences" text="Everything you need for a secure, comfortable and connected lifestyle." />
           <div className="amenities">
             {AMENITIES.map((a, i) => (
               <Reveal key={a.title} className="amenity" delay={(i % 4) * 80}>
@@ -96,11 +115,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Video */}
+      {/* Loan assistance */}
       <section className="section">
-        <div className="container">
-          <SectionTitle eyebrow="Virtual Tour" title="Apartment Walkthrough" text="Take a closer look at the elevation, entrance and interiors." />
-          <Reveal><VideoTour /></Reveal>
+        <div className="container split">
+          <Reveal className="split__body">
+            <SectionTitle
+              center={false}
+              eyebrow="Finance Made Easy"
+              title="Loan Assistance Available"
+              text="Our team helps you get the right loan with minimum hassle – from eligibility check to final approval."
+            />
+            <ul className="ticks">
+              {LOAN_POINTS.map((p) => <li key={p}><Icon name="check" size={18} /> {p}</li>)}
+            </ul>
+            <div className="btn-row">
+              <Link to="/contact" className="btn btn--primary">Ask About Loans</Link>
+            </div>
+          </Reveal>
+          <Reveal className="split__media loan" delay={120}>
+            <img src={IMAGES.keys} alt="Loan assistance" loading="lazy" />
+            <div className="loan__card">
+              <span className="amenity__icon"><Icon name="shield" size={24} /></span>
+              <div>
+                <strong>Hassle-free Process</strong>
+                <span>End-to-end support</span>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -108,15 +149,15 @@ export default function Home() {
       <section className="section section--cream">
         <div className="container">
           <SectionTitle eyebrow="Gallery" title="Elevation & Interiors" />
-          <Gallery items={GALLERY.slice(0, 6)} filters={false} />
+          <Gallery items={[GALLERY[0], GALLERY[1], ...GALLERY.filter((g) => /Hall|Kitchen|Balcony|Lobby/.test(g.caption))].slice(0, 6)} filters={false} />
           <div className="center mt-lg">
-            <Link to="/project" className="btn btn--outline">View Full Gallery</Link>
+            <Link to="/project" className="btn btn--outline">View All Apartment Pictures</Link>
           </div>
         </div>
       </section>
 
       {/* Refer CTA */}
-      <section className="cta" style={{ backgroundImage: `url(${IMAGES.elevation3})` }}>
+      <section className="cta" style={{ backgroundImage: `url(${IMAGES.elevation1})` }}>
         <div className="cta__overlay" />
         <div className="container cta__inner">
           <div>

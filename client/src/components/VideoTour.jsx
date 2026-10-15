@@ -1,21 +1,19 @@
 import { useState } from 'react'
-import { SITE } from '../config'
-import { IMAGES } from '../data'
 import Icon from './Icon'
 
-// Plays the apartment video once the client supplies it (public/videos/apartment.mp4).
-export default function VideoTour() {
+// Plays a client video from public/videos; shows a "coming soon" poster until the file exists.
+export default function VideoTour({ src, poster, label }) {
   const [playing, setPlaying] = useState(false)
   const [missing, setMissing] = useState(false)
 
   return (
     <div className="video">
       {playing && !missing ? (
-        <video src={SITE.video} poster={IMAGES.elevation1} controls autoPlay onError={() => setMissing(true)} />
+        <video src={src} poster={poster} controls autoPlay playsInline onError={() => setMissing(true)} />
       ) : (
-        <button className="video__poster" onClick={() => setPlaying(true)} style={{ backgroundImage: `url(${IMAGES.elevation3})` }}>
+        <button className="video__poster" onClick={() => setPlaying(true)} style={{ backgroundImage: `url(${poster})` }}>
           <span className="video__play"><Icon name="play" size={34} /></span>
-          <span className="video__label">{missing ? 'Apartment video coming soon' : 'Watch the Apartment Walkthrough'}</span>
+          <span className="video__label">{missing ? 'Video coming soon' : label}</span>
         </button>
       )}
     </div>

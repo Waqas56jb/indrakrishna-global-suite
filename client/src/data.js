@@ -1,56 +1,65 @@
 const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`
 
+// Client-supplied pictures live in public/images; Unsplash images fill the rest.
 export const IMAGES = {
-  elevation1: '/West-Mambalam-Main-Image-1.jpeg',
-  elevation2: '/West-Mambalam-Main-Image-2.jpeg',
-  elevation3: '/Elevation.jpg',
-  entrance: '/2-BHK-Entrace-1st-Floor.jpg',
-  living: u('1600210492486-724fe5c67fb0'),
-  living2: u('1600607687939-ce8a6c25118c'),
-  kitchen: u('1556911220-bff31c812dba'),
-  kitchen2: u('1600566753190-17f0baa2a6c3'),
-  bedroom: u('1505693416388-ac5ce068fe85'),
-  bedroom2: u('1616594039964-ae9021a400a0'),
-  bathroom: u('1552321554-5fefe8c9ef14'),
-  bathroom2: u('1584622650111-993a426fbf0a'),
-  dining: u('1600566752355-35792bedcfea'),
-  apartment: u('1522708323590-d24dbb6b0267'),
-  apartment2: u('1502672260266-1c1ef2d93688'),
+  elevation1: '/images/elevation/elevation-angle-1.jpeg',
+  elevation2: '/images/elevation/elevation-angle-2.jpeg',
+  elevation3: '/images/elevation/elevation-front.jpg',
+  entrance: '/images/flat-1/entrance.jpg',
+  flat1: {
+    hall: '/images/flat-1/hall.jpg',
+    kitchen: '/images/flat-1/kitchen.jpg',
+    bedroom: '/images/flat-1/bedroom.jpg',
+    restroom: '/images/flat-1/restroom.jpg',
+    balcony: '/images/flat-1/balcony.jpg',
+  },
+  flat2: {
+    hall: '/images/flat-2/hall.jpg',
+    kitchen: '/images/flat-2/kitchen.jpg',
+    bedroom1: '/images/flat-2/bedroom-1.jpg',
+    bedroom2: '/images/flat-2/bedroom-2.jpg',
+    restroom: '/images/flat-2/restroom.jpg',
+    lobby: '/images/flat-2/lobby-lift.jpg',
+  },
   interior: u('1618221195710-dd6b41faaea6'),
   interior2: u('1600573472550-8090b5e0745e'),
+  living: u('1600210492486-724fe5c67fb0'),
+  keys: u('1560518883-ce09059eeffa'),
 }
+
+export const STATUS_LINE = 'Apartment for Lease – Under Construction, Ready to Occupy by Nov 2028'
 
 export const SLIDES = [
   {
     image: IMAGES.elevation1,
     eyebrow: 'West Mambalam, Chennai',
     title: 'IndraKrishna Global Suite',
-    text: 'Premium apartments for lease – ready to occupy by November 2028.',
+    text: 'Apartments for Lease – Under Construction, Ready to Occupy by Nov 2028.',
   },
   {
-    image: IMAGES.elevation3,
+    image: IMAGES.elevation2,
     eyebrow: 'Elegant Elevation',
     title: 'A Landmark Address',
     text: 'Contemporary architecture with warm tones, lit facades and a gated entrance.',
   },
   {
-    image: IMAGES.entrance,
+    image: IMAGES.flat2.hall,
     eyebrow: '2 BHK Residences',
-    title: 'Finished to Perfection',
-    text: 'Granite staircases, teak-finish doors and premium fittings throughout.',
+    title: 'Spacious, Bright Living',
+    text: 'Marble-finish floors, teak-finish doors and balconies with open views.',
   },
   {
-    image: IMAGES.elevation2,
+    image: IMAGES.elevation3,
     eyebrow: 'Lease Enquiries Open',
     title: 'Reserve Your Home Today',
-    text: 'Limited apartments available. Enquire now for early-bird lease terms.',
+    text: 'Limited apartments available. Loan assistance provided.',
   },
 ]
 
 export const HIGHLIGHTS = [
   { value: 'G+2', label: 'Floors' },
   { value: '2 BHK', label: 'Apartments' },
-  { value: '24/7', label: 'Security' },
+  { value: 'Lift', label: '& Power Backup' },
   { value: 'Nov 2028', label: 'Ready to Occupy' },
 ]
 
@@ -58,16 +67,16 @@ export const HIGHLIGHTS = [
 export const SPECIFICATIONS = [
   {
     title: 'Flooring',
-    image: IMAGES.living,
+    image: IMAGES.flat2.hall,
     items: [
-      ['Living, Dining & Kitchen', 'Vitrified / Italian Marble finish flooring'],
+      ['Living, Dining & Kitchen', 'Vitrified / Marble finish flooring'],
       ['Bedrooms', 'Premium vitrified tiles'],
       ['Staircase', 'Black granite with steel handrails'],
     ],
   },
   {
     title: 'Wall Finish',
-    image: IMAGES.interior2,
+    image: IMAGES.flat1.hall,
     items: [
       ['Exterior', 'Weather Proof Emulsion (Texture finish)'],
       ['Interior', 'Putty finish with premium emulsion paint'],
@@ -76,16 +85,16 @@ export const SPECIFICATIONS = [
   },
   {
     title: 'Bathrooms',
-    image: IMAGES.bathroom,
+    image: IMAGES.flat1.restroom,
     items: [
-      ['Fittings', 'Kohler / Jaquar or equivalent CP fittings'],
+      ['Fittings', 'Jaquar / Hindware or equivalent CP fittings'],
       ['Wall Tiles', 'Designer ceramic tiles up to 7 ft'],
       ['Sanitary', 'Wall-mounted EWC with concealed cistern'],
     ],
   },
   {
     title: 'Kitchen',
-    image: IMAGES.kitchen,
+    image: IMAGES.flat2.kitchen,
     items: [
       ['Counter', 'Granite platform with stainless steel sink'],
       ['Dado', 'Ceramic tiles 2 ft above counter'],
@@ -102,12 +111,12 @@ export const SPECIFICATIONS = [
     ],
   },
   {
-    title: 'Electrical',
-    image: IMAGES.interior,
+    title: 'Lobby & Lift',
+    image: IMAGES.flat2.lobby,
     items: [
-      ['Wiring', 'Concealed copper wiring (Finolex / Havells)'],
-      ['Switches', 'Modular switches (Legrand or equivalent)'],
-      ['Backup', 'Power backup for common areas & lift'],
+      ['Lift', 'Branded passenger lift with power backup'],
+      ['Lobby', 'Marble flooring with ambient lighting'],
+      ['Electrical', 'Concealed copper wiring & modular switches'],
     ],
   },
 ]
@@ -123,6 +132,13 @@ export const AMENITIES = [
   { icon: 'pin', title: 'Prime Location', text: 'Close to rail, metro and markets.' },
 ]
 
+export const LOAN_POINTS = [
+  'Tie-ups with leading nationalised & private banks',
+  'Help with documentation and eligibility check',
+  'Quick processing and attractive interest rates',
+  'Dedicated support from enquiry to disbursement',
+]
+
 export const NEARBY = [
   ['West Mambalam Railway Station', '0.5 km'],
   ['Ashok Nagar Metro Station', '2.0 km'],
@@ -132,41 +148,47 @@ export const NEARBY = [
   ['Chennai Airport', '12 km'],
 ]
 
-export const APARTMENTS = [
+// Two 2 BHK flat sets supplied by the client.
+export const FLATS = [
   {
-    type: '2 BHK – Type A',
-    area: '~950 sq.ft',
-    floor: 'First & Second Floor',
-    image: IMAGES.living2,
-    features: ['2 Bedrooms with attached bath', 'Spacious living & dining', 'Utility area', 'Balcony'],
+    id: 'flat-1',
+    type: '2 BHK – Flat 1',
+    floor: 'First Floor',
+    cover: IMAGES.flat1.hall,
+    text: 'A warm, well-lit 2 BHK with a feature-wall living room, modular kitchen and a sit-out balcony overlooking the street.',
+    features: ['Spacious hall with feature wall', 'Modular kitchen', '2 Bedrooms', 'Attached rest room', 'Balcony'],
+    photos: [
+      { src: IMAGES.entrance, caption: 'Entrance – 1st Floor' },
+      { src: IMAGES.flat1.hall, caption: 'Hall' },
+      { src: IMAGES.flat1.kitchen, caption: 'Kitchen' },
+      { src: IMAGES.flat1.bedroom, caption: 'Bedroom' },
+      { src: IMAGES.flat1.restroom, caption: 'Rest Room' },
+      { src: IMAGES.flat1.balcony, caption: 'Balcony' },
+    ],
   },
   {
-    type: '2 BHK – Type B',
-    area: '~1,050 sq.ft',
-    floor: 'First & Second Floor',
-    image: IMAGES.apartment,
-    features: ['2 Bedrooms + Study nook', 'Open kitchen with dining', '2 Bathrooms', 'Corner balcony'],
-  },
-  {
-    type: '3 BHK – Premium',
-    area: '~1,350 sq.ft',
+    id: 'flat-2',
+    type: '2 BHK – Flat 2',
     floor: 'Second Floor',
-    image: IMAGES.interior,
-    features: ['3 Bedrooms (1 master suite)', 'Large living room', '3 Bathrooms', 'Twin balconies'],
+    cover: IMAGES.flat2.hall,
+    text: 'A bright, open-plan 2 BHK with marble-finish flooring, a large living area opening to the balcony, and lift access from a premium lobby.',
+    features: ['Open living & dining', 'Modern kitchen', '2 Bedrooms', 'Designer rest room', 'Lobby with lift'],
+    photos: [
+      { src: IMAGES.flat2.hall, caption: 'Hall' },
+      { src: IMAGES.flat2.kitchen, caption: 'Kitchen' },
+      { src: IMAGES.flat2.bedroom1, caption: 'Bedroom 1' },
+      { src: IMAGES.flat2.bedroom2, caption: 'Bedroom 2' },
+      { src: IMAGES.flat2.restroom, caption: 'Rest Room' },
+      { src: IMAGES.flat2.lobby, caption: 'Lobby & Lift' },
+    ],
   },
 ]
 
 export const GALLERY = [
-  { src: IMAGES.elevation1, caption: 'Front Elevation', tag: 'Elevation' },
-  { src: IMAGES.elevation3, caption: 'Evening Elevation', tag: 'Elevation' },
-  { src: IMAGES.elevation2, caption: 'Side Elevation', tag: 'Elevation' },
-  { src: IMAGES.entrance, caption: '2 BHK Entrance – 1st Floor', tag: 'Interior' },
-  { src: IMAGES.living, caption: 'Living Room', tag: 'Interior' },
-  { src: IMAGES.kitchen2, caption: 'Modular Kitchen', tag: 'Interior' },
-  { src: IMAGES.bedroom, caption: 'Master Bedroom', tag: 'Interior' },
-  { src: IMAGES.bathroom2, caption: 'Bathroom', tag: 'Interior' },
-  { src: IMAGES.dining, caption: 'Dining Area', tag: 'Interior' },
-  { src: IMAGES.bedroom2, caption: 'Bedroom', tag: 'Interior' },
+  { src: IMAGES.elevation1, caption: 'Elevation – Angle 1', tag: 'Elevation' },
+  { src: IMAGES.elevation2, caption: 'Elevation – Angle 2', tag: 'Elevation' },
+  { src: IMAGES.elevation3, caption: 'Front Elevation', tag: 'Elevation' },
+  ...FLATS.flatMap((f) => f.photos.map((p) => ({ ...p, caption: `${f.type.split('– ')[1]} · ${p.caption}`, tag: f.type.split('– ')[1] }))),
 ]
 
 export const COUNTRIES = [

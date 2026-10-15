@@ -46,7 +46,7 @@ export default function Contact() {
           <SectionTitle
             eyebrow="Enquiry Form"
             title="Send Us an Enquiry"
-            text="Your message is saved securely and sent to our team by email. You can also forward it to us on WhatsApp."
+            text="Share your name, mobile number, email and message. It is saved securely and sent to our team by email and WhatsApp."
           />
           <div className="card"><EnquiryForm /></div>
         </div>
