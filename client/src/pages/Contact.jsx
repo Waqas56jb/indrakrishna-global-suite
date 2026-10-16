@@ -32,7 +32,7 @@ export default function Contact() {
               <h4>Email</h4>
               <p>{SITE.email}</p>
             </a>
-            <a className="info-card" href={whatsappLink(SITE.whatsapp)} target="_blank" rel="noreferrer">
+            <a className="info-card" href={whatsappLink(SITE.whatsapp, SITE.waGreeting)} target="_blank" rel="noreferrer">
               <span className="amenity__icon amenity__icon--wa"><WhatsAppIcon size={24} /></span>
               <h4>WhatsApp</h4>
               <p>{SITE.phone}</p>

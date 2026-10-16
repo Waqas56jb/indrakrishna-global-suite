@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { PAGE_SIZES } from '../api'
 import { whatsappLink } from '../config'
 import { useLockBodyScroll } from '../hooks'
-import { Field } from './EnquiryForm'
+import { Field, validate } from './EnquiryForm'
 import Icon, { WhatsAppIcon } from './Icon'
 
 const fmtDate = (iso) =>
@@ -21,6 +21,7 @@ function EditModal({ row, columns, onClose, onSave }) {
   const editable = columns.filter((c) => c.key !== 'created_at')
   const [values, setValues] = useState(() => Object.fromEntries(editable.map((c) => [c.key, row[c.key] ?? ''])))
   const [state, setState] = useState({ saving: false, error: '' })
+  const [errors, setErrors] = useState({})
   useLockBodyScroll(true)
 
   useEffect(() => {
@@ -31,17 +32,24 @@ function EditModal({ row, columns, onClose, onSave }) {
 
   const submit = async (e) => {
     e.preventDefault()
+    const { message: _message, ...rest } = values // free-text message is not format-checked
+    const errs = validate(rest, ['name', 'contact_no'])
+    if (values.amount && Number(values.amount) < 0) errs.amount = 'Amount cannot be negative'
+    if (values.rent_amount && Number(values.rent_amount) < 0) errs.rent_amount = 'Amount cannot be negative'
+    setErrors(errs)
+    if (Object.keys(errs).length) return
     setState({ saving: true, error: '' })
     try {
       await onSave(row.id, values)
     } catch (err) {
+      if (err.errors) setErrors(err.errors)
       setState({ saving: false, error: err.message })
     }
   }
 
   return (
     <div className="modal" role="dialog" aria-modal="true" onClick={onClose}>
-      <form className="modal__card" onClick={(e) => e.stopPropagation()} onSubmit={submit}>
+      <form className="modal__card" onClick={(e) => e.stopPropagation()} onSubmit={submit} noValidate>
         <div className="modal__head">
           <h3>Edit – {row.name || `#${row.id}`}</h3>
           <button type="button" className="modal__close" onClick={onClose} aria-label="Close"><Icon name="close" size={22} /></button>
@@ -57,6 +65,8 @@ function EditModal({ row, columns, onClose, onSave }) {
               rows={c.type === 'textarea' ? 3 : undefined}
               className={c.type === 'textarea' ? 'field--full' : ''}
               value={values[c.key]}
+              error={errors[c.key]}
+              min={c.type === 'number' ? 0 : undefined}
               onChange={(e) => setValues((v) => ({ ...v, [c.key]: e.target.value }))}
             >
               {c.options ? [<option key="" value="">—</option>, ...c.options.map((o) => <option key={o}>{o}</option>)] : undefined}
@@ -100,12 +110,27 @@ export default function RecordsTable({ fetcher, update, columns, statuses, waMes
 
   const pages = Math.max(1, Math.ceil(result.total / perPage))
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
+  const [searchError, setSearchError] = useState('')
+  const validateSearch = ({ search, field, date }) => {
+    const s = search.trim()
+    if (field !== 'all' && !s) return 'Enter a value to search'
+    if (s.length > 50) return 'Search text is too long (max 50 characters)'
+    if (field === 'mobile' && !/^\+?[\d\s-]{3,}$/.test(s)) return 'Mobile No. – enter at least 3 digits'
+    if ((field === 'name' || field === 'country') && !/^[\p{L} .'-]{2,}$/u.test(s)) return `${field === 'name' ? 'Name' : 'Country'} – letters only, at least 2`
+    if (field === 'all' && s && s.length < 2) return 'Enter at least 2 characters'
+    if (date && date > new Date().toISOString().slice(0, 10)) return 'Date cannot be in the future'
+    return ''
+  }
   const onSearch = (e) => {
     e.preventDefault()
+    const err = validateSearch(form)
+    setSearchError(err)
+    if (err) return
     setPage(1)
-    setQuery(form)
+    setQuery({ ...form, search: form.search.trim() })
   }
   const reset = () => {
+    setSearchError('')
     const empty = { search: '', field: 'all', status: '', date: '' }
     setForm(empty)
     setPage(1)
@@ -143,7 +168,7 @@ export default function RecordsTable({ fetcher, update, columns, statuses, waMes
       <form className="records__filters" onSubmit={onSearch}>
         <div className="records__search">
           <Icon name="search" size={18} />
-          <input value={form.search} onChange={set('search')} placeholder="Search Name / Mobile No. / Country…" aria-label="Search" />
+          <input value={form.search} onChange={set('search')} placeholder="Search Name / Mobile No. / Country…" aria-label="Search" maxLength={50} />
         </div>
         <select value={form.field} onChange={set('field')} aria-label="Search by">
           <option value="all">All fields</option>
@@ -155,10 +180,11 @@ export default function RecordsTable({ fetcher, update, columns, statuses, waMes
           <option value="">All statuses</option>
           {statuses.map((s) => <option key={s}>{s}</option>)}
         </select>
-        <input type="date" value={form.date} onChange={set('date')} aria-label="Filter by date" />
+        <input type="date" value={form.date} onChange={set('date')} aria-label="Filter by date" max={new Date().toISOString().slice(0, 10)} />
         <button className="btn btn--primary btn--sm"><Icon name="search" size={16} /> Search</button>
         <button type="button" className="btn btn--ghost btn--sm" onClick={reset}>Reset</button>
       </form>
+      {searchError && <p className="alert alert--error records__error">{searchError}</p>}
 
       <div className="records__bar">
         <span className="records__meta">

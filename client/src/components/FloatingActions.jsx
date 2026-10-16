@@ -6,7 +6,7 @@ export default function FloatingActions() {
   const { pathname } = useLocation()
   if (pathname.startsWith('/admin')) return null
   const tel = `tel:${SITE.phone.replace(/\s/g, '')}`
-  const wa = whatsappLink(SITE.whatsapp, `Hi, I'm interested in ${SITE.name} apartments for lease.`)
+  const wa = whatsappLink(SITE.whatsapp, SITE.waGreeting)
 
   return (
     <>

@@ -7,8 +7,8 @@ export default function AdminLayout() {
   const navigate = useNavigate()
   if (!auth.token) return <Navigate to="/login" replace />
 
-  const logout = () => {
-    api.logout()
+  const logout = async () => {
+    await api.logout()
     navigate('/login')
   }
 

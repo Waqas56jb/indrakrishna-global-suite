@@ -6,6 +6,7 @@
 //   POST enquiry.php            -> { success, id }
 //   POST referral.php           -> { success, id }
 //   POST login.php              { mobile, password } -> { success, token }
+//   POST logout.php             -> { success }
 //   GET  customers.php          ?page&per_page&search&field&status&date -> { success, data, total }
 //                               (field = all|name|mobile|country; mobile search must match digits only)
 //   GET  referrals.php          (same params)
@@ -38,8 +39,13 @@ async function request(path, { body, params } = {}) {
   const res = await fetch(url, init)
   const data = await res.json().catch(() => ({}))
   if (!res.ok || data.success === false) {
-    if (res.status === 401) auth.clear()
-    throw new Error(data.message || 'Something went wrong. Please try again.')
+    if (res.status === 401 && auth.token && path !== 'login.php') {
+      auth.clear()
+      window.location.assign('/login') // session expired
+    }
+    const err = new Error(data.message || 'Something went wrong. Please try again.')
+    err.errors = data.errors || {}
+    throw err
   }
   return data
 }
@@ -118,7 +124,8 @@ export const api = {
     auth.set(data.token)
     return data
   },
-  logout() {
+  async logout() {
+    if (!USE_MOCK && auth.token) await request('logout.php', { body: {} }).catch(() => {})
     auth.clear()
   },
   async customers(params) {

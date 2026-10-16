@@ -1,0 +1,4 @@
+node_modules
+# Server secrets – only ever lives on the hosting server
+server/api/_private/config.php
+.env.*.local

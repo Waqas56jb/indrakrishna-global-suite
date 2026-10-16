@@ -14,18 +14,7 @@ import Project from './pages/Project'
 import LoanAssistance from './pages/LoanAssistance'
 import ReferEarn from './pages/ReferEarn'
 import Terms from './pages/Terms'
-
-const TITLES = {
-  '/': 'Apartments for Lease – Ready to Occupy by Nov 2028',
-  '/project': 'Project',
-  '/refer-and-earn': 'Refer & Earn',
-  '/loan-assistance': 'Loan Assistance',
-  '/contact': 'Contact Us',
-  '/login': 'Login',
-  '/terms': 'Terms & Conditions',
-  '/admin/customers': 'Customers List',
-  '/admin/referrals': 'Referral List',
-}
+import { applySeo } from './seo'
 
 function SiteLayout() {
   return (
@@ -44,7 +33,7 @@ export default function App() {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    document.title = `IndraKrishna Global Suite - ${TITLES[pathname] || 'Page Not Found'}`
+    applySeo(pathname)
     const target = hash && document.getElementById(decodeURIComponent(hash.slice(1)))
     if (target) {
       // Wait a frame so the new page has laid out before jumping to the section.

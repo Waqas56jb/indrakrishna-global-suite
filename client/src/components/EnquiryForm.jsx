@@ -4,16 +4,33 @@ import { SITE, whatsappLink } from '../config'
 import { COUNTRIES } from '../data'
 import Icon, { WhatsAppIcon } from './Icon'
 
-export function validate(values, required) {
+export const LIMITS = { name: 60, designation: 60, email: 100, contact_no: 18, whatsapp_no: 18, message: 500 }
+
+export const isValidPhone = (v) => {
+  const s = String(v).trim()
+  const digits = s.replace(/\D/g, '')
+  return /^\+?[\d\s()-]+$/.test(s) && digits.length >= 10 && digits.length <= 13
+}
+
+export function validate(values, required, minLengths = {}) {
   const errors = {}
-  required.forEach((k) => { if (!String(values[k] || '').trim()) errors[k] = 'This field is required' })
-  Object.entries(values).forEach(([k, v]) => {
-    if (!v) return
-    if (k.includes('email') && !/^\S+@\S+\.\S+$/.test(v)) errors[k] = 'Enter a valid email'
-    if ((k.endsWith('_no') || k === 'mobile') && !/^\+?[\d\s-]{8,16}$/.test(v)) errors[k] = 'Enter a valid number'
+  Object.entries(values).forEach(([k, raw]) => {
+    const v = String(raw ?? '').trim()
+    if (!v) {
+      if (required.includes(k)) errors[k] = 'This field is required'
+      return
+    }
+    if (k === 'name' && !/^[\p{L}][\p{L} .'-]*$/u.test(v)) errors[k] = 'Use letters only'
+    else if (k === 'name' && v.length < 2) errors[k] = 'Enter at least 2 letters'
+    else if (k.includes('email') && !/^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(v)) errors[k] = 'Enter a valid email address'
+    else if ((k.endsWith('_no') || k === 'mobile') && !isValidPhone(v)) errors[k] = 'Enter a valid 10–13 digit number'
+    else if (minLengths[k] && v.length < minLengths[k]) errors[k] = `Enter at least ${minLengths[k]} characters`
+    else if (LIMITS[k] && v.length > LIMITS[k]) errors[k] = `Maximum ${LIMITS[k]} characters`
   })
   return errors
 }
+
+const trimAll = (values) => Object.fromEntries(Object.entries(values).map(([k, v]) => [k, typeof v === 'string' ? v.trim() : v]))
 
 export function Field({ label, name, error, as = 'input', children, className = '', ...props }) {
   const Tag = as
@@ -44,7 +61,7 @@ const FORMS = {
     button: 'Submit Enquiry',
     success: 'Thank you! Your lease enquiry has been received. Our team will contact you shortly.',
     whatsapp: SITE.whatsapp,
-    waTitle: `New Lease Enquiry – ${SITE.name}`,
+    waTitle: SITE.waGreeting,
   },
   referral: {
     fields: [
@@ -56,6 +73,7 @@ const FORMS = {
       { name: 'message', label: 'Message', as: 'textarea', placeholder: 'Name & contact of the family / friend / colleague you are referring' },
     ],
     required: ['name', 'email', 'contact_no', 'message'],
+    minLengths: { message: 10 },
     submit: api.submitReferral,
     button: 'Submit Referral',
     success: 'Thank you for your referral! Our team will get in touch soon.',
@@ -81,16 +99,23 @@ export default function LeadForm({ type = 'enquiry', compact = false }) {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    const errs = validate(values, cfg.required)
+    const errs = validate(values, cfg.required, cfg.minLengths)
     setErrors(errs)
-    if (Object.keys(errs).length) return
+    if (Object.keys(errs).length) {
+      // Bring the first invalid field into view (important on phones).
+      const first = e.currentTarget.querySelector(`[name="${Object.keys(errs)[0]}"]`)
+      first?.focus()
+      return
+    }
     setStatus({ state: 'loading', message: '' })
+    const clean = trimAll(values)
     try {
-      await cfg.submit(values)
-      setSent(values)
+      await cfg.submit({ ...clean, website: e.currentTarget.website.value })
+      setSent(clean)
       setValues(empty)
       setStatus({ state: 'success', message: cfg.success })
     } catch (err) {
+      if (err.errors) setErrors(err.errors) // field errors from the server
       setStatus({ state: 'error', message: err.message })
     }
   }
@@ -101,6 +126,8 @@ export default function LeadForm({ type = 'enquiry', compact = false }) {
 
   return (
     <form className={`form ${compact ? 'form--compact' : ''}`} onSubmit={onSubmit} noValidate>
+      {/* Honeypot: hidden from people, filled in by spam bots */}
+      <input type="text" name="website" className="hp" tabIndex={-1} autoComplete="off" aria-hidden="true" />
       <div className="form__grid">
         {cfg.fields.map(({ options, ...f }) => (
           <Field
@@ -111,6 +138,8 @@ export default function LeadForm({ type = 'enquiry', compact = false }) {
             value={values[f.name]}
             onChange={onChange}
             error={errors[f.name]}
+            maxLength={LIMITS[f.name]}
+            aria-invalid={errors[f.name] ? 'true' : undefined}
           >
             {options?.map((o) => <option key={o}>{o}</option>)}
           </Field>

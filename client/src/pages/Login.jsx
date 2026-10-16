@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { api, auth } from '../api'
-import { Field } from '../components/EnquiryForm'
+import { Field, isValidPhone } from '../components/EnquiryForm'
 import Icon from '../components/Icon'
 import Logo from '../components/Logo'
 import { IMAGES } from '../data'
@@ -19,6 +19,10 @@ export default function Login() {
     e.preventDefault()
     if (!values.mobile || !values.password) {
       setStatus({ state: 'error', message: 'Please enter mobile number and password.' })
+      return
+    }
+    if (!isValidPhone(values.mobile)) {
+      setStatus({ state: 'error', message: 'Enter a valid 10–13 digit mobile number.' })
       return
     }
     setStatus({ state: 'loading', message: '' })

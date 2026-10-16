@@ -994,8 +994,21 @@ body { -webkit-tap-highlight-color: transparent; overflow-wrap: break-word; }
 .modal__body { padding: 20px 22px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .modal .alert { margin: 0 22px 12px; }
 
+.nri-band { background: linear-gradient(90deg, var(--primary), #d0732c); color: #fff; }
+.nri-band__inner { display: flex; align-items: center; gap: 20px; padding: 26px 0; }
+.nri-band__icon { width: 60px; height: 60px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); display: grid; place-items: center; flex: none; }
+.nri-band__inner > div { flex: 1; min-width: 0; }
+.nri-band h3 { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 28px); font-weight: 600; }
+.nri-band p { margin: 4px 0 0; color: #fde9d6; }
+.records__error { margin-top: 12px; }
+
 @media (max-width: 900px) {
   .audience, .flat-cards, .doc-cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .nri-band__inner { flex-wrap: wrap; text-align: left; gap: 14px; }
+  .nri-band__icon { width: 48px; height: 48px; }
+  .nri-band .btn { width: 100%; }
 }
 @media (max-width: 640px) {
   .sector { font-size: 13px; padding: 8px 14px; }
@@ -1013,3 +1026,7 @@ body { -webkit-tap-highlight-color: transparent; overflow-wrap: break-word; }
   .modal__foot { padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
   .modal__foot .btn { flex: 1; }
 }
+
+/* Honeypot anti-spam field */
+.hp { position: absolute !important; left: 0; top: 0; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); opacity: 0; pointer-events: none; }
+.form { position: relative; }

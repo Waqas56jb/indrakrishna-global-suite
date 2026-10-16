@@ -52,8 +52,8 @@ export default function Home() {
               text="Designed for Corporate Companies, Staff Quarters and Guest Houses."
             />
             <p className="lead">
-              We are constructing 2-BHK flats on a 3000 sq.feet plot with 2 floors at West Mambalam, Chennai. The ground floor
-              has a covered car park, and a lift serves both floors. The First Floor has 4 flats of 610 sq.feet and the Second
+              We are constructing 2-BHK flats on a 3000 sq.feet plot with Stilt + 2 floors at West Mambalam, Chennai. The
+              stilt floor has a covered car park, and a lift serves both residential floors. The First Floor has 4 flats of 610 sq.feet and the Second
               Floor has 2 flats of 1200 sq.feet – a total of 6 flats.
             </p>
             <p className="lead">
@@ -91,13 +91,25 @@ export default function Home() {
             <Reveal className="audience__card" delay={200}>
               <Icon name="users" size={28} />
               <h4>4 – 5 Clients</h4>
-              <p>Take 1, 2 or all 6 flats in the apartment.</p>
+              <p>Tenants can take 1 / 2 / 4 or 6 flats on lease.</p>
             </Reveal>
           </div>
           <h3 className="sectors__title">Pure Residential Accommodation Ideal for Working Professionals From</h3>
           <div className="sectors">
             {SECTORS.map((s) => <span key={s} className="sector">{s}</span>)}
           </div>
+        </div>
+      </section>
+
+      {/* NRI tenants (client requirement) */}
+      <section className="nri-band">
+        <div className="container nri-band__inner">
+          <span className="nri-band__icon"><Icon name="globe" size={30} /></span>
+          <div>
+            <h3>NRI Tenants Welcome</h3>
+            <p>There is no restriction on the number of flats to take on lease.</p>
+          </div>
+          <Link to="/loan-assistance#nri" className="btn btn--gold btn--sm">NRI Details</Link>
         </div>
       </section>
 
@@ -163,7 +175,7 @@ export default function Home() {
             <ul className="ticks">
               <li><Icon name="check" size={18} /> Salaried – Aadhaar, Address Proof, 6 months Salary Slips, Bank Statement & ITR</li>
               <li><Icon name="check" size={18} /> Business – Aadhaar, Address Proof, 6 months Bank Statement & ITR</li>
-              <li><Icon name="check" size={18} /> NRI tenants welcome – no restriction on number of flats</li>
+              <li><Icon name="check" size={18} /> NRI tenants welcome – there is no restriction on number of flats to take on lease</li>
             </ul>
             <div className="btn-row">
               <Link to="/loan-assistance" className="btn btn--primary">Loan & NRI Details</Link>

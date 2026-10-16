@@ -12,7 +12,7 @@ import { FAQS, FEATURES, FLATS, GALLERY, IMAGES, LEASE_TERM, SPECIFICATIONS, STA
 const FACTS = [
   ['Flats', '6 Semi-Furnished 2-BHK'],
   ['Sizes', '610 & 1200 Sq.ft'],
-  ['Floors', 'Car Park + 2 Floors'],
+  ['Floors', 'Stilt + 2 Floors'],
   ['Lease', LEASE_TERM],
   ['Approval', 'Greater Chennai Corporation'],
   ['Possession', 'Ready to Occupy by Nov 2028'],

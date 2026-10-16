@@ -17,7 +17,7 @@ export default function Footer() {
             <a href={SITE.social.facebook} target="_blank" rel="noreferrer" aria-label="Facebook">f</a>
             <a href={SITE.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">ig</a>
             <a href={SITE.social.youtube} target="_blank" rel="noreferrer" aria-label="YouTube">▶</a>
-            <a href={whatsappLink(SITE.whatsapp)} target="_blank" rel="noreferrer" aria-label="WhatsApp">
+            <a href={whatsappLink(SITE.whatsapp, SITE.waGreeting)} target="_blank" rel="noreferrer" aria-label="WhatsApp">
               <WhatsAppIcon size={16} />
             </a>
           </div>
