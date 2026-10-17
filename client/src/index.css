@@ -1034,7 +1034,9 @@ body { -webkit-tap-highlight-color: transparent; overflow-wrap: break-word; }
 /* ============ Client round 3 fixes ============ */
 .status-strip__inner { row-gap: 6px; }
 .status-strip__sub { flex-basis: 100%; font-size: 15px; font-weight: 500; opacity: 0.95; }
-.footer__grid { grid-template-columns: 1.3fr 0.8fr 1.2fr 1.5fr; }
+@media (min-width: 1081px) {
+  .footer__grid { grid-template-columns: 1.3fr 0.8fr 1.2fr 1.5fr; }
+}
 .footer p.footer__mail { align-items: center; }
 .footer p.footer__mail span { white-space: nowrap; font-size: 14px; }
 .nowrap { white-space: nowrap; }
