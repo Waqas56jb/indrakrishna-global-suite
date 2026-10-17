@@ -40,10 +40,10 @@ export default function Footer() {
         <div>
           <h4>Lease Enquiries</h4>
           <p><a href={tel(SITE.phone)}><Icon name="phone" size={16} /> {SITE.phone}</a></p>
-          <p className="footer__mail"><a href={`mailto:${SITE.email}`}><Icon name="mail" size={16} /> {SITE.email}</a></p>
+          <p className="footer__mail"><Icon name="mail" size={16} /> <span>{SITE.email}</span></p>
           <h4 className="mt">Referrals</h4>
           <p><a href={tel(SITE.referral.phone)}><Icon name="phone" size={16} /> {SITE.referral.phone}</a></p>
-          <p className="footer__mail"><a href={`mailto:${SITE.referral.email}`}><Icon name="mail" size={16} /> {SITE.referral.email}</a></p>
+          <p className="footer__mail"><Icon name="mail" size={16} /> <span>{SITE.referral.email}</span></p>
         </div>
       </div>
       <div className="footer__bottom">

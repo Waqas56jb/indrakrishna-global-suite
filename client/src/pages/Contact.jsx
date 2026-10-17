@@ -27,11 +27,11 @@ export default function Contact() {
               <h4>Lease Enquiries</h4>
               <p>{SITE.phone}</p>
             </a>
-            <a className="info-card" href={`mailto:${SITE.email}`}>
+            <div className="info-card">
               <span className="amenity__icon"><Icon name="mail" size={24} /></span>
               <h4>Email</h4>
               <p>{SITE.email}</p>
-            </a>
+            </div>
             <a className="info-card" href={whatsappLink(SITE.whatsapp, SITE.waGreeting)} target="_blank" rel="noreferrer">
               <span className="amenity__icon amenity__icon--wa"><WhatsAppIcon size={24} /></span>
               <h4>WhatsApp</h4>

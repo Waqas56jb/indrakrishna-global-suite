@@ -10,7 +10,7 @@ import { IMAGES, LEASE_TERM } from '../data'
 
 const STEPS = [
   { icon: 'share', title: 'Refer', text: 'Refer your family, friends or colleagues looking for a flat on lease.' },
-  { icon: 'file', title: 'They Lease', text: `They take a flat on lease for ${LEASE_TERM}.` },
+  { icon: 'file', title: 'Tenants / Clients / NRI Can take 1 / 2 / 4 or 6 Flats', text: `They take a flat on lease for ${LEASE_TERM}.` },
   { icon: 'gift', title: 'You Earn', text: `Earn up to ${SITE.referral.bonus} per unit as per the referral terms.` },
 ]
 
@@ -24,7 +24,7 @@ export default function ReferEarn() {
           <SectionTitle
             eyebrow="Refer & Earn"
             title={`Refer & Earn up to ${SITE.referral.bonus}/-`}
-            text={`Refer your family, friends or colleagues to take up a flat on lease for ${LEASE_TERM} and earn up to Rs. 25,000/-.`}
+            text={<>Refer your family, friends or colleagues to take up a flat on lease for <span className="nowrap">{LEASE_TERM}</span> and earn up to <span className="nowrap">Rs. 25,000/-.</span></>}
           />
           <div className="steps">
             {STEPS.map((s, i) => (
@@ -40,7 +40,7 @@ export default function ReferEarn() {
             <Icon name="phone" size={22} />
             <p>
               Call us at <a href={tel(SITE.referral.phone)}><strong>{SITE.referral.phone}</strong></a> or mail{' '}
-              <a href={`mailto:${SITE.referral.email}`}><strong>{SITE.referral.email}</strong></a>
+              <strong>{SITE.referral.email}</strong>
             </p>
             <Link to="/terms" className="btn btn--outline btn--sm">Referral Terms</Link>
           </div>

@@ -49,9 +49,9 @@ export default function Header() {
             <a href={tel(SITE.phone)}>
               <Icon name="phone" size={14} /> Lease Enquiries: {SITE.phone}
             </a>
-            <a href={`mailto:${SITE.email}`}>
+            <span>
               <Icon name="mail" size={14} /> {SITE.email}
-            </a>
+            </span>
           </span>
         </div>
       </div>

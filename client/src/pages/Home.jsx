@@ -220,7 +220,7 @@ export default function Home() {
             />
             <div className="contact-mini">
               <a href={tel(SITE.phone)}><Icon name="phone" /> {SITE.phone}</a>
-              <a href={`mailto:${SITE.email}`}><Icon name="mail" /> {SITE.email}</a>
+              <span><Icon name="mail" /> {SITE.email}</span>
               <span><Icon name="pin" /> {SITE.siteAddress}</span>
             </div>
           </div>

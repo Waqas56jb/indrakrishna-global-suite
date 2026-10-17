@@ -18,7 +18,9 @@ export const SITE = {
   },
   // Exact site pin shared by the client (13.0345007, 80.2191277).
   geo: { lat: 13.0345007, lng: 80.2191277 },
-  mapEmbed: 'https://www.google.com/maps?q=IndraKrishna+Global+Suite@13.0345007,80.2191277&z=17&output=embed',
+  // Place-ID embed: shows the pin with the building name and address card.
+  mapEmbed:
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1200!2d80.2191277!3d13.0345007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267000514bc35%3A0xc8857e1938ad5edd!2sIndraKrishna%20Global%20Suite!5e0!3m2!1sen!2sin!4v1760000000000!5m2!1sen!2sin',
   mapLink:
     'https://www.google.com/maps/place/IndraKrishna+Global+Suite/@13.0345007,80.2165528,17z/data=!3m1!4b1!4m6!3m5!1s0x3a5267000514bc35:0xc8857e1938ad5edd!8m2!3d13.0345007!4d80.2191277!16s%2Fg%2F11zy6p1lq6',
   // Default WhatsApp message from visitors (client's wording).
