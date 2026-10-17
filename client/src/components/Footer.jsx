@@ -51,8 +51,9 @@ export default function Footer() {
           <span>
             © {new Date().getFullYear()} {SITE.company} ·{' '}
             <a href={SITE.companySite} target="_blank" rel="noreferrer">www.indrakrishna.com</a>
+            <span className="footer__sep" aria-hidden="true">|</span>
+            <Link to="/terms">Terms &amp; Conditions</Link>
           </span>
-          <Link to="/terms">Terms &amp; Conditions</Link>
         </div>
       </div>
     </footer>

@@ -14,7 +14,7 @@ const FACTS = [
   ['Sizes', '610 & 1200 Sq.ft'],
   ['Floors', 'Stilt + 2 Floors'],
   ['Lease', LEASE_TERM],
-  ['Approval', 'Approved'],
+  ['Parking', 'Car & Two Wheeler Parking Available'],
   ['Possession', 'Ready to Occupy by Nov 2028'],
 ]
 

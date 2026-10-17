@@ -90,7 +90,7 @@ export default function Home() {
             </Reveal>
             <Reveal className="audience__card" delay={200}>
               <Icon name="users" size={28} />
-              <h4>1 – 6 Clients</h4>
+              <h4>Clients / NRI</h4>
               <p>Tenants can take 1 / 2 / 4 or 6 flats on lease.</p>
             </Reveal>
           </div>

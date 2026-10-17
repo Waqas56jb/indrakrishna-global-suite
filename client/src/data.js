@@ -74,7 +74,7 @@ export const FEATURES = [
   { icon: 'home', title: '6 Semi-Furnished Flats', text: 'Premium 2-BHK suite apartments.' },
   { icon: 'ruler', title: '610 & 1200 Sq. Feet', text: 'Two flat sizes to suit your team.' },
   { icon: 'layers', title: 'Stilt + 2 Floors', text: '4 flats on First Floor, 2 flats on Second Floor.' },
-  { icon: 'car', title: 'Covered Car Park', text: 'Stilt floor reserved for parking.' },
+  { icon: 'car', title: 'Covered Car Park', text: 'Car & Two Wheeler Parking Available.' },
   { icon: 'lift', title: 'Lift Access', text: 'Easy access to every flat.' },
   { icon: 'bolt', title: 'Solar / Inverter Support', text: 'Uninterrupted everyday comfort.' },
   { icon: 'wifi', title: 'High Speed Internet', text: 'Work-from-home ready.' },
@@ -82,7 +82,7 @@ export const FEATURES = [
 ]
 
 export const WORKFLOW = [
-  { title: 'Plan Approval & Permits', text: 'Approved.' },
+  { title: 'Plan Approval & Permits', text: 'Plan Approved.' },
   {
     title: 'Superstructure Execution',
     text: 'Pile foundations, RCC framing, bricklaying, and electrical / plumbing rough-ins with grade-A materials.',

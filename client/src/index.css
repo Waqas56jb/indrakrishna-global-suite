@@ -1038,7 +1038,8 @@ body { -webkit-tap-highlight-color: transparent; overflow-wrap: break-word; }
 .footer p.footer__mail { align-items: center; }
 .footer p.footer__mail span { white-space: nowrap; font-size: 14px; }
 .nowrap { white-space: nowrap; }
-.footer__bottom-inner { flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 6px; }
+.footer__bottom-inner { justify-content: center; text-align: center; }
+.footer__sep { margin: 0 10px; opacity: 0.6; }
 .form__actions { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
 .form__actions .btn { width: 100%; }
 @media (max-width: 1100px) {
