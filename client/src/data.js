@@ -100,7 +100,7 @@ export const FAQS = [
   ['When will the apartment be completed?', 'The residential flats are under construction. The apartment will be ready to occupy by Nov 2028.'],
   ['How many flats are in the apartment?', 'The First Floor has 4 flats of 610 sq.feet each and the Second Floor has 2 flats of 1200 sq.feet each – a total of 6 flats.'],
   ['What is the lease period?', 'Flats are offered on lease for 8 + 2 (construction) = 10 years.'],
-  ['How many flats can a tenant take?', 'Tenants can take 1 / 2 / 4 or 6 flats on lease.'],
+  ['How many flats can a tenant take?', 'There is no restriction on flats. Tenants / NRI Clients can take 1 / 2 / 4 or all 6 Flats on Lease.'],
   ['Who can take the flats on lease?', 'Corporate companies, working professionals, Government organisations and clients worldwide with an office in India – as staff quarters, guest houses or employee accommodation.'],
 ]
 

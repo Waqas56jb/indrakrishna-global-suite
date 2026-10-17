@@ -91,7 +91,7 @@ export default function Home() {
             <Reveal className="audience__card" delay={200}>
               <Icon name="users" size={28} />
               <h4>Clients / NRI</h4>
-              <p>Tenants can take 1 / 2 / 4 or 6 flats on lease.</p>
+              <p>There is no restriction on flats. They can take 1 / 2 / 4 or all 6 Flats on Lease.</p>
             </Reveal>
           </div>
           <h3 className="sectors__title">Pure Residential Accommodation Ideal for Working Professionals From</h3>

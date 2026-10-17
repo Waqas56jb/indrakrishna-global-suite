@@ -10,7 +10,7 @@ import { IMAGES, LEASE_TERM } from '../data'
 
 const STEPS = [
   { icon: 'share', title: 'Refer', text: 'Refer your family, friends or colleagues looking for a flat on lease.' },
-  { icon: 'file', title: 'Tenants / Clients / NRI Can take 1 / 2 / 4 or 6 Flats', text: `They take a flat on lease for ${LEASE_TERM}.` },
+  { icon: 'file', title: 'Client / NRI', text: `There is no restriction on taking Flats for Lease. They can take 1 / 2 / 4 or 6 Flats on Lease. Lease for ${LEASE_TERM}.` },
   { icon: 'gift', title: 'You Earn', text: `Earn up to ${SITE.referral.bonus} per unit as per the referral terms.` },
 ]
 
