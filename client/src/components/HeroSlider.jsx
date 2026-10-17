@@ -29,7 +29,7 @@ export default function HeroSlider({ slides, interval = 5500 }) {
           <div className="hero__overlay" />
           <div className="container hero__content">
             <span className="eyebrow eyebrow--light">{s.eyebrow}</span>
-            <h1>{s.title}</h1>
+            {i === 0 ? <h1 className="hero__title">{s.title}</h1> : <h2 className="hero__title">{s.title}</h2>}
             <p>{s.text}</p>
             <div className="hero__cta">
               <Link to="/contact" className="btn btn--primary">Enquire Now</Link>
