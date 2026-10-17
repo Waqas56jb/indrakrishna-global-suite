@@ -15,7 +15,7 @@ export default function Reveal({ children, delay = 0, as: Tag = 'div', className
           io.disconnect()
         }
       },
-      { threshold: 0.12 },
+      { threshold: 0, rootMargin: '0px 0px -40px 0px' }, // any overlap counts, so tall blocks always show
     )
     io.observe(el)
     return () => io.disconnect()

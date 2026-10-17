@@ -45,7 +45,6 @@ export default function Header() {
     <header className={`header ${overHero ? 'header--clear' : ''} ${open ? 'header--open' : ''}`}>
       <div className="topbar">
         <div className="container topbar__inner">
-          <span className="topbar__status">{SITE.tagline}</span>
           <span className="topbar__right">
             <a href={tel(SITE.phone)}>
               <Icon name="phone" size={14} /> Lease Enquiries: {SITE.phone}

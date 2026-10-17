@@ -98,7 +98,7 @@ h1, h2 { font-family: var(--serif); font-weight: 600; }
 .header--clear { background: transparent; box-shadow: none; backdrop-filter: none; }
 .topbar { background: var(--brown-800); color: #f1e3cf; font-size: 13px; }
 .header--clear .topbar { background: rgba(0, 0, 0, 0.25); }
-.topbar__inner { display: flex; justify-content: space-between; align-items: center; height: 36px; gap: 16px; }
+.topbar__inner { display: flex; justify-content: flex-end; align-items: center; height: 36px; gap: 16px; }
 .topbar__inner span, .topbar a { display: inline-flex; align-items: center; gap: 6px; }
 .topbar__right { gap: 22px !important; }
 .topbar a:hover { color: var(--gold); }
@@ -1030,3 +1030,18 @@ body { -webkit-tap-highlight-color: transparent; overflow-wrap: break-word; }
 /* Honeypot anti-spam field */
 .hp { position: absolute !important; left: 0; top: 0; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); opacity: 0; pointer-events: none; }
 .form { position: relative; }
+
+/* ============ Client round 3 fixes ============ */
+.status-strip__inner { row-gap: 6px; }
+.status-strip__sub { flex-basis: 100%; font-size: 15px; font-weight: 500; opacity: 0.95; }
+.footer__grid { grid-template-columns: 1.3fr 0.8fr 1.2fr 1.5fr; }
+.footer p.footer__mail a { white-space: nowrap; font-size: 14px; }
+.footer__bottom-inner { flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 6px; }
+.form__actions { display: grid; grid-template-columns: 2fr 1fr; gap: 12px; }
+.form__actions .btn { width: 100%; }
+@media (max-width: 1100px) {
+  .footer p.footer__mail a { white-space: normal; }
+}
+@media (max-width: 380px) {
+  .form__actions { grid-template-columns: 1fr; }
+}

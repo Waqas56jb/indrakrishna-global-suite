@@ -54,9 +54,10 @@ const FORMS = {
       { name: 'contact_no', label: 'Contact No *', ...PHONE },
       { name: 'whatsapp_no', label: 'WhatsApp No', ...PHONE },
       { name: 'country', label: 'Country', as: 'select', options: COUNTRIES },
-      { name: 'message', label: 'Message', as: 'textarea', placeholder: 'No. of flats required, preferred size (610 / 1200 sq.ft), etc.' },
+      { name: 'message', label: 'Message *', as: 'textarea', placeholder: 'No. of flats required, preferred size (610 / 1200 sq.ft), etc.' },
     ],
-    required: ['name', 'email', 'contact_no'],
+    required: ['name', 'email', 'contact_no', 'message'],
+    minLengths: { message: 10 },
     submit: api.submitEnquiry,
     button: 'Submit Enquiry',
     success: 'Thank you! Your lease enquiry has been received. Our team will contact you shortly.',
@@ -70,7 +71,7 @@ const FORMS = {
       { name: 'contact_no', label: 'Contact No *', ...PHONE },
       { name: 'whatsapp_no', label: 'WhatsApp No', ...PHONE },
       { name: 'country', label: 'Country', as: 'select', options: COUNTRIES },
-      { name: 'message', label: 'Message', as: 'textarea', placeholder: 'Name & contact of the family / friend / colleague you are referring' },
+      { name: 'message', label: 'Message *', as: 'textarea', placeholder: 'Name & contact of the family / friend / colleague you are referring' },
     ],
     required: ['name', 'email', 'contact_no', 'message'],
     minLengths: { message: 10 },
@@ -120,6 +121,13 @@ export default function LeadForm({ type = 'enquiry', compact = false }) {
     }
   }
 
+  const onReset = () => {
+    setValues(empty)
+    setErrors({})
+    setStatus({ state: 'idle', message: '' })
+    setSent(null)
+  }
+
   const waText = sent
     ? [cfg.waTitle, ...Object.entries(sent).filter(([, v]) => v).map(([k, v]) => `${LABELS[k]}: ${v}`)].join('\n')
     : ''
@@ -156,9 +164,14 @@ export default function LeadForm({ type = 'enquiry', compact = false }) {
         </div>
       )}
 
-      <button className="btn btn--primary btn--block" disabled={status.state === 'loading'}>
-        {status.state === 'loading' ? 'Sending…' : cfg.button}
-      </button>
+      <div className="form__actions">
+        <button type="submit" className="btn btn--primary" disabled={status.state === 'loading'}>
+          {status.state === 'loading' ? 'Sending…' : cfg.button}
+        </button>
+        <button type="button" className="btn btn--outline" onClick={onReset} disabled={status.state === 'loading'}>
+          Reset
+        </button>
+      </div>
     </form>
   )
 }

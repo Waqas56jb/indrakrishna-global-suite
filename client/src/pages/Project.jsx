@@ -14,7 +14,7 @@ const FACTS = [
   ['Sizes', '610 & 1200 Sq.ft'],
   ['Floors', 'Stilt + 2 Floors'],
   ['Lease', LEASE_TERM],
-  ['Approval', 'Greater Chennai Corporation'],
+  ['Approval', 'Approved'],
   ['Possession', 'Ready to Occupy by Nov 2028'],
 ]
 

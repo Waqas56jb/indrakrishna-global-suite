@@ -1,13 +1,12 @@
 import { Link } from 'react-router-dom'
 import LeadForm from '../components/EnquiryForm'
-import Gallery from '../components/Gallery'
 import HeroSlider from '../components/HeroSlider'
 import Icon from '../components/Icon'
 import Reveal from '../components/Reveal'
 import SectionTitle from '../components/SectionTitle'
 import VideoTour from '../components/VideoTour'
 import { SITE, tel } from '../config'
-import { FEATURES, FLATS, GALLERY, HIGHLIGHTS, IMAGES, LEASE_TERM, SECTORS, SLIDES, STATUS_LINE } from '../data'
+import { FEATURES, FLATS, HIGHLIGHTS, IMAGES, LEASE_TERM, SECTORS, SLIDES, STATUS_LINE } from '../data'
 
 export default function Home() {
   return (
@@ -20,6 +19,7 @@ export default function Home() {
           <span className="status-strip__dot" />
           <strong>{STATUS_LINE}</strong>
           <a href={tel(SITE.phone)} className="btn btn--gold btn--sm"><Icon name="phone" size={16} /> {SITE.phone}</a>
+          <span className="status-strip__sub">One Tenant / Client can take Multiple Flats on Lease – Total 6 Flats</span>
         </div>
       </div>
 
@@ -52,8 +52,8 @@ export default function Home() {
               text="Designed for Corporate Companies, Staff Quarters and Guest Houses."
             />
             <p className="lead">
-              We are constructing 2-BHK flats on a 3000 sq.feet plot with Stilt + 2 floors at West Mambalam, Chennai. The
-              stilt floor has a covered car park, and a lift serves both residential floors. The First Floor has 4 flats of 610 sq.feet and the Second
+              We are constructing 2-BHK flats on a 3000 sq.feet area with Stilt + 2 floors at West Mambalam, Chennai. The
+              stilt floor has a covered car park, with lift access to both residential floors. The First Floor has 4 flats of 610 sq.feet and the Second
               Floor has 2 flats of 1200 sq.feet – a total of 6 flats.
             </p>
             <p className="lead">
@@ -86,11 +86,11 @@ export default function Home() {
             <Reveal className="audience__card" delay={100}>
               <Icon name="globe" size={28} />
               <h4>Global Clients</h4>
-              <p>Companies worldwide with an office in India – as guest houses.</p>
+              <p>Companies worldwide with an office in India – as staff quarters / guest houses.</p>
             </Reveal>
             <Reveal className="audience__card" delay={200}>
               <Icon name="users" size={28} />
-              <h4>4 – 5 Clients</h4>
+              <h4>1 – 6 Clients</h4>
               <p>Tenants can take 1 / 2 / 4 or 6 flats on lease.</p>
             </Reveal>
           </div>
@@ -194,16 +194,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="section section--cream">
-        <div className="container">
-          <SectionTitle eyebrow="Gallery" title="Elevation & 2-BHK Interiors" />
-          <Gallery items={[GALLERY[0], GALLERY[1], ...GALLERY.filter((g) => /Hall|Kitchen|Balcony|Lobby/.test(g.caption))].slice(0, 6)} filters={false} />
-          <div className="center mt-lg">
-            <Link to="/project" className="btn btn--outline">View All Pictures</Link>
-          </div>
-        </div>
-      </section>
 
       {/* Refer CTA */}
       <section className="cta" style={{ backgroundImage: `url(${IMAGES.elevation1})` }}>

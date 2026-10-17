@@ -1,6 +1,4 @@
-const u = (id, w = 1400) => `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`
-
-// Client-supplied pictures live in public/images; Unsplash images fill the rest.
+// Client-supplied pictures live in public/images; stock photos (from Unsplash) are in public/images/stock.
 export const IMAGES = {
   elevation1: '/images/elevation/elevation-angle-1.jpeg',
   elevation2: '/images/elevation/elevation-angle-2.jpeg',
@@ -21,11 +19,11 @@ export const IMAGES = {
     restroom: '/images/flat-2/restroom.jpg',
     lobby: '/images/flat-2/lobby-lift.jpg',
   },
-  interior: u('1618221195710-dd6b41faaea6'),
-  electrical: u('1600573472550-8090b5e0745e'),
-  keys: u('1560518883-ce09059eeffa'),
-  documents: u('1554224155-6726b3ff858f'),
-  office: u('1600880292203-757bb62b4baf'),
+  interior: '/images/stock/interior.jpg',
+  electrical: '/images/stock/electrical.jpg',
+  keys: '/images/stock/keys.jpg',
+  documents: '/images/stock/documents.jpg',
+  office: '/images/stock/office.jpg',
 }
 
 export const STATUS_LINE = 'Apartment For Lease – Under Construction, Ready to Occupy by Nov 2028'
@@ -43,7 +41,7 @@ export const SLIDES = [
     image: IMAGES.elevation2,
     eyebrow: 'Premium 2-BHK Suite Apartments',
     title: '6 Semi-Furnished Flats for Lease',
-    text: '610 sq.ft & 1200 sq.ft flats with lift, covered car park and 24x7 CCTV security.',
+    text: '610 sq.ft & 1200 sq.ft flats with lift access, covered car park and 24x7 CCTV security.',
   },
   {
     image: IMAGES.flat2.hall,
@@ -55,7 +53,7 @@ export const SLIDES = [
     image: IMAGES.elevation3,
     eyebrow: 'Under Construction',
     title: 'Ready to Occupy by Nov 2028',
-    text: 'Plan approved by Greater Chennai Corporation. Lease enquiries open now.',
+    text: 'Semi-furnished 2-BHK flats for long-term lease. Lease enquiries open now.',
   },
 ]
 
@@ -77,14 +75,14 @@ export const FEATURES = [
   { icon: 'ruler', title: '610 & 1200 Sq. Feet', text: 'Two flat sizes to suit your team.' },
   { icon: 'layers', title: 'Stilt + 2 Floors', text: '4 flats on First Floor, 2 flats on Second Floor.' },
   { icon: 'car', title: 'Covered Car Park', text: 'Stilt floor reserved for parking.' },
-  { icon: 'lift', title: 'Lift for Two Floors', text: 'Easy access to every flat.' },
+  { icon: 'lift', title: 'Lift Access', text: 'Easy access to every flat.' },
   { icon: 'bolt', title: 'Solar / Inverter Support', text: 'Uninterrupted everyday comfort.' },
   { icon: 'wifi', title: 'High Speed Internet', text: 'Work-from-home ready.' },
   { icon: 'shield', title: '24x7 CCTV Security', text: 'Round-the-clock surveillance.' },
 ]
 
 export const WORKFLOW = [
-  { title: 'Plan Approval & Permits', text: 'Plan approved by Greater Chennai Corporation.' },
+  { title: 'Plan Approval & Permits', text: 'Approved.' },
   {
     title: 'Superstructure Execution',
     text: 'Pile foundations, RCC framing, bricklaying, and electrical / plumbing rough-ins with grade-A materials.',
@@ -124,7 +122,7 @@ export const SPECIFICATIONS = [
     image: IMAGES.flat1.restroom,
     items: [['Bathroom', 'Shower & Stainless Steel Taps']],
   },
-  { title: 'Lobby & Lift', image: IMAGES.flat2.lobby, items: [['Lift', 'Lift serving both residential floors']] },
+  { title: 'Lobby & Lift', image: IMAGES.flat2.lobby, items: [['Lift', 'Lift Access']] },
 ]
 
 export const LOAN_DOCS = [

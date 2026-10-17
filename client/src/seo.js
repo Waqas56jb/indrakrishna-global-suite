@@ -11,7 +11,7 @@ export const PAGES = {
   '/project': {
     title: `Project – 2-BHK Flats, Specifications & FAQ | ${BRAND}`,
     description:
-      'Stilt + 2 floors, 6 semi-furnished 2-BHK flats of 610 & 1200 sq.ft with lift, covered car park, solar/inverter support and 24x7 CCTV. Plan approved by Greater Chennai Corporation.',
+      'Stilt + 2 floors, 6 semi-furnished 2-BHK flats of 610 & 1200 sq.ft with lift, covered car park, solar/inverter support and 24x7 CCTV.',
   },
   '/refer-and-earn': {
     title: `Refer & Earn up to ₹25,000 | ${BRAND}`,

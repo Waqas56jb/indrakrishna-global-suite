@@ -16,7 +16,7 @@ $data = validate_input($input, [
     'contact_no'  => ['required' => true, 'type' => 'phone', 'max' => 18],
     'whatsapp_no' => ['type' => 'phone', 'max' => 18],
     'country'     => ['max' => 60],
-    'message'     => ['max' => 500],
+    'message'     => ['required' => true, 'min' => 10, 'max' => 500],
 ]);
 $data['country'] = $data['country'] ?: 'India';
 
